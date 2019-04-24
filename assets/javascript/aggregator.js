@@ -4,6 +4,10 @@ var showSearchSuffix = "&page=1";
 var showSearchDetailsURL = "https://www.episodate.com/api/show-details?q="
 var searchOmdbURL = "https://www.omdbapi.com/?apikey=f8e29b5&t=";
 var wikipediaURL = "https://en.wikipedia.org/wiki/";
+var movieDBAPI = "https://api.themoviedb.org/3/";
+var movieDBAPISuffix = "?api_key=29a27fe8b3f85bad1ab054a647529d57";
+var movieDBAPISourceSuffix = "&external_source=imdb_id";
+
 
 function searchShowButtonClicked() {
     console.log("searchShowButtonClicked");
@@ -89,8 +93,53 @@ function searchOMDBButtonClicked() {
     });
 }
 
+function searchMovieDBButtonClicked() {
+    console.log("searchMovieDBButtonClicked");
+    var id = $("#showMovieDBText").val();
+    console.log("Searching for", id);
+    var myURL = movieDBAPI + "find/" + id + movieDBAPISuffix + movieDBAPISourceSuffix;
+    console.log(myURL);
+    $.get(myURL).then(function (response) {
+        console.log(response);
+        var resultText = JSON.stringify(response, null, 2);
+        console.log(resultText);
+        $("#searchMovieDBResults").text(resultText);
+    });
+}
+
+function searchMovieDBDetailsButtonClicked() {
+    console.log("searchMovieDBDetailsButtonClicked");
+    var id = $("#showMovieDBDetailsText").val();
+    console.log("Searching for", id);
+    var myURL = movieDBAPI + "tv/" + id + movieDBAPISuffix;
+    console.log(myURL);
+    $.get(myURL).then(function (response) {
+        console.log(response);
+        var resultText = JSON.stringify(response, null, 2);
+        console.log(resultText);
+        $("#searchMovieDBDetailsResults").text(resultText);
+    });
+}
+
+function searchMovieDBEpisodeButtonClicked() {
+    console.log("searchMovieDBEpisodeButtonClicked");
+    var id = $("#showMovieDBEpisodeText").val();
+    console.log("Searching for", id);
+    var myURL = movieDBAPI + "tv/" + id + "/season/1/episode/1" + movieDBAPISuffix;
+    console.log(myURL);
+    $.get(myURL).then(function (response) {
+        console.log(response);
+        var resultText = JSON.stringify(response, null, 2);
+        console.log(resultText);
+        $("#searchMovieDBEpisodeResults").text("Overview: " + response.overview + "\n" + resultText);
+    });
+}
+
 $(function () {
     $("#searchShowButton").on("click", searchShowButtonClicked);
     $("#searchShowDetailsButton").on("click", searchShowDetailsButtonClicked);
     $("#searchOMDBButton").on("click", searchOMDBButtonClicked);
+    $("#searchMovieDBButton").on("click", searchMovieDBButtonClicked);
+    $("#searchMovieDBDetailsButton").on("click", searchMovieDBDetailsButtonClicked);
+    $("#searchMovieDBEpisodeButton").on("click", searchMovieDBEpisodeButtonClicked);
 });
