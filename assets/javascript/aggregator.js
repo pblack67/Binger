@@ -16,7 +16,7 @@ function searchShowButtonClicked() {
         var resultText = JSON.stringify(resultOBJ, null, 2);
 
         var showText = "";
-        resultOBJ.tv_shows.forEach(function(tvShow) {
+        resultOBJ.tv_shows.forEach(function (tvShow) {
             showText += tvShow.name;
             showText += " (";
             showText += tvShow.network;
@@ -36,11 +36,25 @@ function searchShowDetailsButtonClicked() {
     var show = $("#showDetailsText").val();
     console.log("Searching for", show);
     var myURL = showSearchDetailsURL + show;
+    var resultText = "";
     $.get(myURL).then(function (response) {
-        console.log(response);
         var resultOBJ = JSON.parse(response);
-        var resultText = JSON.stringify(resultOBJ, null, 2);
+        if (resultOBJ.tvShow.length !== undefined) {
+            resultText = "I couldn't find it";
+        } else {
+            resultText = JSON.stringify(resultOBJ, null, 2);
 
+            var nameNetwork = resultOBJ.tvShow.name + "(" + resultOBJ.tvShow.network + ")\n"
+            var episodeText = "";
+            resultOBJ.tvShow.episodes.forEach(function (episode) {
+                episodeText += "Season: " + episode.season
+                episodeText += ", Episode: " + episode.episode
+                episodeText += ", Name: " + episode.name
+                episodeText += "\n";
+            });
+
+            resultText = nameNetwork + episodeText + resultText;
+        }
         console.log(resultText);
         $("#searchShowDetailsResults").text(resultText);
 
@@ -62,11 +76,11 @@ function searchOMDBButtonClicked() {
         // turn the actors into Wikipedia links. It works!
         var actors = response.Actors.split(",");
         console.log(actors);
-        actors.forEach(function(actor) {
+        actors.forEach(function (actor) {
             actor = actor.trim().replace(" ", "_");
             console.log(actor);
             var anchor = $("<a>")
-                .attr("href",wikipediaURL+actor)
+                .attr("href", wikipediaURL + actor)
                 .attr("target", "_blank")
                 .text(actor);
             var div = $("<div>").append(anchor);
@@ -75,7 +89,7 @@ function searchOMDBButtonClicked() {
     });
 }
 
-$(function() {
+$(function () {
     $("#searchShowButton").on("click", searchShowButtonClicked);
     $("#searchShowDetailsButton").on("click", searchShowDetailsButtonClicked);
     $("#searchOMDBButton").on("click", searchOMDBButtonClicked);
