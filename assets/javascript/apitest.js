@@ -143,16 +143,22 @@ function getEpisodes(season) {
     console.log("getEpisodes");
     for (var i = 0; i < season.episodeCount; i++) {
         var myURL = movieDBAPI
-         + "tv/" 
-         + currentShow.tmdbID 
-         + "/season/"
-         + season.seasonNumber
-         + "/episode/"
-         + (i + 1) 
-         + movieDBAPISuffix;
+            + "tv/"
+            + currentShow.tmdbID
+            + "/season/"
+            + season.seasonNumber
+            + "/episode/"
+            + (i + 1)
+            + movieDBAPISuffix;
         console.log(myURL);
         $.get(myURL).then(function (response) {
             console.log(response);
+            var myEpisode = {
+                name: response.name,
+                episodeNumber: response.episode_number,
+                seasonNumber: response.season_number
+            }
+            // currentShow.seasons[response.season_number].episodes[response.episode_number] = myEpisode;
         });
     }
 }
@@ -183,6 +189,10 @@ function getSeasonDetailsAndEpisodes(tmdbID) {
                 episodeCount: season.episode_count,
                 episodes: []
             };
+            // Create dummy episodes so that async reponses can access cleanly
+            for (var i = 0; i < mySeason.episodeCount; i++) {
+                mySeason.episodes.push({});
+            }
             console.log("Season:", mySeason);
             show.seasons.push(mySeason);
             getEpisodes(mySeason);
