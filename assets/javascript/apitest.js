@@ -156,11 +156,40 @@ function getEpisodes(season) {
             var myEpisode = {
                 name: response.name,
                 episodeNumber: response.episode_number,
-                seasonNumber: response.season_number
+                seasonNumber: response.season_number,
+                description: response.overview
             }
-            // currentShow.seasons[response.season_number].episodes[response.episode_number] = myEpisode;
+            currentShow.seasons[response.season_number - 1].episodes[response.episode_number - 1] = myEpisode;
+            console.log("Episode", currentShow.seasons[response.season_number - 1].episodes[response.episode_number - 1]);
         });
     }
+}
+
+function findShow(showName) {
+    var myShow = null;
+    shows.forEach(function (show) {
+        if (showName === show.name) {
+            myShow = show;
+            console.log("Found the show!");
+        }
+    });
+    return myShow;
+}
+
+function addSeasonWidgets(show) {
+    // TODO Remove this for production code
+    // TODO Create season widgets here and dynamically add to html
+    // For now, populate the API page results
+    var resultText = "";
+    show.seasons.forEach(function (season) {
+        resultText += (season.seasonName
+            + ", Episodes "
+            + season.episodeCount
+            + ", Description: "
+            + season.description
+            + "\n");
+    });
+    $("#generateSeasonListResults").text(resultText);
 }
 
 // Load the seasons, iterate each season to get the episode info 
@@ -169,40 +198,48 @@ function getSeasonDetailsAndEpisodes(tmdbID) {
     var myURL = movieDBAPI + "tv/" + tmdbID + movieDBAPISuffix;
     console.log(myURL);
     $.get(myURL).then(function (response) {
-        console.log(response);
-        // Create the show
-        var show = {
-            tmdbID: tmdbID,
-            name: response.name,
-            network: response.networks[0].name,
-            description: response.overview,
-            seasons: []
-        };
-
-        currentShow = show;
-        // Create seasons
-        response.seasons.forEach(function (season) {
-            var mySeason = {
-                seasonName: season.name,
-                seasonNumber: season.season_number,
-                description: season.overview,
-                episodeCount: season.episode_count,
-                episodes: []
-            };
-            // Create dummy episodes so that async reponses can access cleanly
-            for (var i = 0; i < mySeason.episodeCount; i++) {
-                mySeason.episodes.push({});
-            }
-            console.log("Season:", mySeason);
-            show.seasons.push(mySeason);
-            getEpisodes(mySeason);
-        });
-
-        // Fetch episodes
+        console.log("Show", response);
 
         // TODO put in duplicate protection
-        console.log(show);
-        shows.push(show);
+        var show = findShow(response.name);
+
+        if (show === null) {
+
+            // Create the show
+            show = {
+                tmdbID: tmdbID,
+                name: response.name,
+                network: response.networks[0].name,
+                description: response.overview,
+                seasons: []
+            };
+
+            // TODO This is really for episodes.
+            currentShow = show;
+
+            // Create seasons
+            response.seasons.forEach(function (season) {
+                var mySeason = {
+                    seasonName: season.name,
+                    seasonNumber: season.season_number,
+                    description: season.overview,
+                    episodeCount: season.episode_count,
+                    episodes: []
+
+                };
+                // Create dummy episodes so that async reponses can access cleanly
+                for (var i = 0; i < mySeason.episodeCount; i++) {
+                    mySeason.episodes.push({});
+                }
+
+                console.log("Season:", mySeason);
+                show.seasons.push(mySeason);
+            });
+
+            console.log(show);
+            shows.push(show);
+        }
+        addSeasonWidgets(show);
     });
 }
 
@@ -220,9 +257,9 @@ function getTMDBIDAndEpisodes(imdbidID) {
 }
 
 // Get the IMDB ID from the OMDB so we can use TMDB. Got it?
-function generateEpisodeListButtonClicked() {
-    console.log("generateEpisodeListButtonClicked");
-    var show = $("#generateEpisodeListText").val();
+function generateSeasonListButtonClicked() {
+    console.log("generateSeasonListButtonClicked");
+    var show = $("#generateSeasonListText").val();
     console.log("Searching for", show);
     var myURL = searchOmdbURL + show;
     console.log(myURL);
@@ -237,6 +274,12 @@ function generateEpisodeListButtonClicked() {
     });
 }
 
+function dumpShowsButtonClicked() {
+    shows.forEach(function (show) {
+        console.log(show);
+    });
+}
+
 $(function () {
     $("#searchShowButton").on("click", searchShowButtonClicked);
     $("#searchShowDetailsButton").on("click", searchShowDetailsButtonClicked);
@@ -244,5 +287,7 @@ $(function () {
     $("#searchMovieDBButton").on("click", searchMovieDBButtonClicked);
     $("#searchMovieDBDetailsButton").on("click", searchMovieDBDetailsButtonClicked);
     $("#searchMovieDBEpisodeButton").on("click", searchMovieDBEpisodeButtonClicked);
-    $("#generateEpisodeListButton").on("click", generateEpisodeListButtonClicked);
+    $("#generateSeasonListButton").on("click", generateSeasonListButtonClicked);
+    $("#dumpShowsButton").on("click", dumpShowsButtonClicked);
+
 });
