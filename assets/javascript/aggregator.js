@@ -1,3 +1,13 @@
+// Espisodate show search API endpoint
+var showSearchURL = "https://www.episodate.com/api/search?q=" // yourshowhere&page=1"
+var showSearchSuffix = "&page=1";
+var showSearchDetailsURL = "https://www.episodate.com/api/show-details?q="
+var searchOmdbURL = "https://www.omdbapi.com/?apikey=f8e29b5&t=";
+var wikipediaURL = "https://en.wikipedia.org/wiki/";
+var movieDBAPI = "https://api.themoviedb.org/3/";
+var movieDBAPISuffix = "?api_key=29a27fe8b3f85bad1ab054a647529d57";
+var movieDBAPISourceSuffix = "&external_source=imdb_id";
+
 var shows = [];
 var currentShow = {};
 
