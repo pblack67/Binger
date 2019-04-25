@@ -304,22 +304,24 @@ function getTMDBIDAndSeasons(imdbidID) {
     });
 }
 
-// Get the IMDB ID from the OMDB so we can use TMDB. Got it?
-function generateSeasonListButtonClicked() {
-    console.log("generateSeasonListButtonClicked");
-    var show = $("#generateSeasonListText").val().trim();
+function getOMDBIDandSeasons(show) {
+    console.log("getOMDBIDandSeasons");
     console.log("Searching for", show);
     var myURL = searchOmdbURL + show;
     console.log(myURL);
     $.get(myURL).then(function (response) {
         console.log(response);
         console.log("IMDB ID:", response.imdbID);
-        // var resultText = JSON.stringify(response, null, 2);
-        // console.log(resultText);
-
         // I now have the IMDB ID, fire another ajax to get the TMDB ID
         getTMDBIDAndSeasons(response.imdbID);
     });
+}
+
+// Get the IMDB ID from the OMDB so we can use TMDB. Got it?
+function generateSeasonListButtonClicked() {
+    console.log("generateSeasonListButtonClicked");
+    var show = $("#generateSeasonListText").val().trim();
+    getOMDBIDandSeasons(show);
 }
 
 function dumpShowsButtonClicked() {
