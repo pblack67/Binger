@@ -86,6 +86,8 @@ function findShow(showName) {
 //add seasons on search page using forEach
 //each currently displayed in a new div, working on fixing card display
 function addSeasonWidgets(show) {
+    var cardDiv = $("<div>")
+        .addClass(".card");
 
     show.seasons.forEach(function (season) {
         var addToWatchListButton = $("<button>")
@@ -113,11 +115,11 @@ function addSeasonWidgets(show) {
             .addClass("row")
             .append(col1Div)
             .append(col2Div);
-        $(".card").append(rowDiv);
+        cardDiv.append(rowDiv);
     });
 
 
-    $(".showSeasons").append($(".card"));
+    $(".showSeasons").append(cardDiv);
 }
 
 // Load the seasons, iterate each season to get the episode info 
@@ -204,6 +206,7 @@ function getOMDBIDandSeasons(show) {
 function searchShowBtnClicked(event) {
     event.preventDefault();
     $(".showSeasons").show();
+    $(".showSeasons").empty();
     console.log("Get Seasons");
     var show = $("#searchedShow").val().trim();
     getOMDBIDandSeasons(show);
