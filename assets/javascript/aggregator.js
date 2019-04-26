@@ -1,3 +1,4 @@
+
 // Espisodate show search API endpoint
 var showSearchURL = "https://www.episodate.com/api/search?q=" // yourshowhere&page=1"
 var showSearchSuffix = "&page=1";
@@ -75,7 +76,23 @@ function findShow(showName) {
     return myShow;
 }
 
+//add seasons on search page using forEach
+//each currently displayed in a new div, working on fixing card display
 function addSeasonWidgets(show) {
+
+    var searchResults="";
+  show.seasons.forEach(function(season){  
+    searchResults += "<div>" + season.seasonName 
+    + " Episodes: " 
+    + season.episodeCount + "</div><div>"
+    + " Description: " 
+    + season.description + "</div><br>"
+    });
+    $(".card").append(searchResults);
+    $(".showSeasons").append($(".card"));
+  
+ 
+    
     // TODO Create season widgets here and dynamically add to html
 }
 
@@ -159,3 +176,19 @@ function getOMDBIDandSeasons(show) {
         getTMDBIDAndSeasons(response.imdbID);
     });
 }
+
+function searchShowBtnClicked(event){
+    event.preventDefault();
+    $(".showSeasons").show();
+    console.log("Get Seasons");
+    var show = $("#searchedShow").val().trim();
+    getOMDBIDandSeasons(show);
+
+}
+
+$(function(){
+    $(".showSeasons").hide();
+    $("#searchShowBtn").on("click", searchShowBtnClicked);
+    
+
+});
