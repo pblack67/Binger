@@ -19,7 +19,8 @@ function createWatchList(watchList) {
             .text("more_vert");
         var cardSpan = $("<span>")
             .addClass("card-title")
-            .text(episode.showName + " Season " + episode.seasonNumber + " " + " Episode " + episode.episodeNumber)
+            .text(episode.showName + " (" + episode.network + ") Season " 
+                + episode.seasonNumber + " " + " Episode " + episode.episodeNumber)
             .append(moreIcon);
         var cardContentDiv = $("<div>")
             .addClass("card-content activator grey-text text-darken-4")
