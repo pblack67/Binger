@@ -79,19 +79,22 @@ function findShow(showName) {
 //add seasons on search page using forEach
 //each currently displayed in a new div, working on fixing card display
 function addSeasonWidgets(show) {
-
     var searchResults="";
-  show.seasons.forEach(function(season){  
-    searchResults += "<div>" + season.seasonName 
-    + " Episodes: " 
-    + season.episodeCount + "</div><div>"
-    + " Description: " 
-    + season.description + "</div><br>"
-    });
-    $(".card").append(searchResults);
-    $(".showSeasons").append($(".card"));
-  
- 
+    
+    show.seasons.forEach(function(season){  
+      searchResults += "<div class='row'><div class='col s2'></div><div class='col s8'><div class='card-content'><span class='card-title'>"
+       + season.seasonName 
+      + " Episodes: " 
+      + season.episodeCount + "</span><p>"
+      + " Description: " 
+      + season.description + "</p></div><div class='card-action'>" +
+      "<button class='btn waves-effect black'> Add to Watchlist</button><br></div><div class='col s2'></div></div></div>"
+      
+      });
+      
+      $(".card").append(searchResults);
+      $(".showSeasons").append($(".card"));
+     
     
     // TODO Create season widgets here and dynamically add to html
 }
