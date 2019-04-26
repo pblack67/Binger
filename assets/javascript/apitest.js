@@ -8,6 +8,7 @@ var movieDBAPI = "https://api.themoviedb.org/3/";
 var movieDBAPISuffix = "?api_key=29a27fe8b3f85bad1ab054a647529d57";
 var movieDBAPISourceSuffix = "&external_source=imdb_id";
 
+var watchList = [];
 
 function searchShowButtonClicked() {
     console.log("searchShowButtonClicked");
@@ -145,9 +146,9 @@ function addEpisodeWidgets(episodes) {
     var resultText = "";
     episodes.forEach(function (episode) {
         resultText += ("Show: "
-            + currentShow.name
+            + episode.showName
             + ", Network: "
-            + currentShow.network
+            + episode.network
             + ", Season: "
             + episode.seasonNumber
             + ", Episode: "
@@ -191,6 +192,10 @@ function getEpisodes(showName, seasonNumber) {
             $.get(myURL).then(function (response) {
                 console.log(response);
                 var myEpisode = {
+                    hidden: false,
+                    watched: false,
+                    showName: currentShow.name, 
+                    network: currentShow.network,
                     name: response.name,
                     episodeNumber: response.episode_number,
                     seasonNumber: response.season_number,
@@ -200,7 +205,9 @@ function getEpisodes(showName, seasonNumber) {
                 episodes[response.episode_number - 1] = myEpisode;
                 console.log("Episode", episodes[response.episode_number - 1]);
                 if (isAllEpisodesDownloaded(episodes)) {
-                    addEpisodeWidgets(episodes);
+                    // addEpisodeWidgets(episodes);
+                    watchList = watchList.concat(episodes);
+                    saveWatchList(watchList);
                 }
             });
         }
@@ -337,6 +344,16 @@ function generateEpisodesButtonClicked(event) {
     getEpisodes(showName, seasonNumber);
 }
 
+function newUserDataCallback(snapshot) {
+    var response = snapshot.val();
+    console.log("Watchlist changed:", response);
+    if (response !== null) {
+        if (response.watchList !== undefined) {
+            addEpisodeWidgets(response.watchList);
+        }
+    }
+}
+
 $(function () {
     $("#searchShowButton").on("click", searchShowButtonClicked);
     $("#searchShowDetailsButton").on("click", searchShowDetailsButtonClicked);
@@ -347,4 +364,6 @@ $(function () {
     $("#generateSeasonListButton").on("click", generateSeasonListButtonClicked);
     $("#dumpShowsButton").on("click", dumpShowsButtonClicked);
     $("#generateEpisodesButton").on("click", generateEpisodesButtonClicked);
+
+    userDataRef.on("value", newUserDataCallback);
 });

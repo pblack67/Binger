@@ -11,6 +11,7 @@ var movieDBAPISourceSuffix = "&external_source=imdb_id";
 
 var shows = [];
 var currentShow = {};
+var watchList = [];
 
 function addEpisodeWidgets(episodes) {
     console.log("addEpisodeWidgets");
@@ -47,6 +48,10 @@ function getEpisodes(showName, seasonNumber) {
             $.get(myURL).then(function (response) {
                 console.log(response);
                 var myEpisode = {
+                    hidden: false,
+                    watched: false,
+                    showName: currentShow.name, 
+                    network: currentShow.network,
                     name: response.name,
                     episodeNumber: response.episode_number,
                     seasonNumber: response.season_number,
@@ -56,7 +61,9 @@ function getEpisodes(showName, seasonNumber) {
                 episodes[response.episode_number - 1] = myEpisode;
                 console.log("Episode", episodes[response.episode_number - 1]);
                 if (isAllEpisodesDownloaded(episodes)) {
-                    addEpisodeWidgets(episodes);
+                    // addEpisodeWidgets(episodes);
+                    watchList = watchList.concat(episodes);
+                    saveWatchList(watchList);
                 }
             });
         }
@@ -88,15 +95,12 @@ function addSeasonWidgets(show) {
       + season.episodeCount + "</span><p>"
       + " Description: " 
       + season.description + "</p></div><div class='card-action'>" +
-      "<button class='btn waves-effect black'> Add to Watchlist</button><br></div><div class='col s2'></div></div></div>"
-      
+      "<button class='btn waves-effect black addToWatchList' data-showName='" + show.name + "' data-seasonNumber='" + season.seasonNumber +"'"
+      + "> Add to Watchlist</button><br></div><div class='col s2'></div></div></div>"      
       });
       
       $(".card").append(searchResults);
       $(".showSeasons").append($(".card"));
-     
-    
-    // TODO Create season widgets here and dynamically add to html
 }
 
 // Load the seasons, iterate each season to get the episode info 
@@ -189,9 +193,26 @@ function searchShowBtnClicked(event){
 
 }
 
+function cardActionButtonClicked(event) {
+    console.log(this);
+    var showName = $(this).attr("data-showName");
+    var seasonNumber = $(this).attr("data-seasonNumber");
+    getEpisodes(showName, seasonNumber);
+}
+
+function newUserDataCallback(snapshot) {
+    var response = snapshot.val();
+    console.log("Watchlist changed:", response);
+    if (response !== null) {
+        if (response.watchList !== undefined) {
+            watchList = response.watchList;
+        }
+    }
+}
+
 $(function(){
     $(".showSeasons").hide();
     $("#searchShowBtn").on("click", searchShowBtnClicked);
-    
-
+    $(document).on("click", ".addToWatchList", cardActionButtonClicked);
+    userDataRef.on("value", newUserDataCallback);
 });
