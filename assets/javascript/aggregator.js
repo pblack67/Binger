@@ -50,7 +50,7 @@ function getEpisodes(showName, seasonNumber) {
                 var myEpisode = {
                     hidden: false,
                     watched: false,
-                    showName: currentShow.name, 
+                    showName: currentShow.name,
                     network: currentShow.network,
                     name: response.name,
                     episodeNumber: response.episode_number,
@@ -86,21 +86,38 @@ function findShow(showName) {
 //add seasons on search page using forEach
 //each currently displayed in a new div, working on fixing card display
 function addSeasonWidgets(show) {
-    var searchResults="";
-    
-    show.seasons.forEach(function(season){  
-      searchResults += "<div class='row'><div class='col s2'></div><div class='col s8'><div class='card-content'><span class='card-title'>"
-       + season.seasonName 
-      + " Episodes: " 
-      + season.episodeCount + "</span><p>"
-      + " Description: " 
-      + season.description + "</p></div><div class='card-action'>" +
-      "<button class='btn waves-effect black addToWatchList' data-showName='" + show.name + "' data-seasonNumber='" + season.seasonNumber +"'"
-      + "> Add to Watchlist</button><br></div><div class='col s2'></div></div></div>"      
-      });
-      
-      $(".card").append(searchResults);
-      $(".showSeasons").append($(".card"));
+
+    show.seasons.forEach(function (season) {
+        var addToWatchListButton = $("<button>")
+            .text("Add to WatchList")
+            .addClass("btn waves-effect black addToWatchList")
+            .attr("data-showName", show.name)
+            .attr("data-seasonNumber", season.seasonNumber);
+        var cardActionDiv = $("<div>")
+            .addClass("card-action")
+            .append(addToWatchListButton);
+        var contentP = $("<p>")
+            .text(season.description);
+        var contentSpan = $("<span>")
+            .addClass("card-title")
+            .text(season.seasonName + " Episodes: " + season.episodeCount);
+        var contentDiv = $("<div>")
+            .addClass("card-content")
+            .append(contentSpan, contentP);
+        var col1Div = $("<div>")
+            .addClass("col s2");
+        var col2Div = $("<div>")
+            .addClass("col s8")
+            .append(contentDiv, cardActionDiv);
+        var rowDiv = $("<div>")
+            .addClass("row")
+            .append(col1Div)
+            .append(col2Div);
+        $(".card").append(rowDiv);
+    });
+
+
+    $(".showSeasons").append($(".card"));
 }
 
 // Load the seasons, iterate each season to get the episode info 
@@ -184,7 +201,7 @@ function getOMDBIDandSeasons(show) {
     });
 }
 
-function searchShowBtnClicked(event){
+function searchShowBtnClicked(event) {
     event.preventDefault();
     $(".showSeasons").show();
     console.log("Get Seasons");
@@ -210,7 +227,7 @@ function newUserDataCallback(snapshot) {
     }
 }
 
-$(function(){
+$(function () {
     $(".showSeasons").hide();
     $("#searchShowBtn").on("click", searchShowBtnClicked);
     $(document).on("click", ".addToWatchList", cardActionButtonClicked);

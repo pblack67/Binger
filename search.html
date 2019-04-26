@@ -1,92 +1,85 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="assets/css/materialize.css"  media="screen,projection"/>
-    <link type="text/css" rel="stylesheet" href="assets/css/materialize.min.css"  media="screen,projection"/>
-    <link href="assets/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="assets/css/materialize.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="assets/css/materialize.min.css" media="screen,projection" />
+    <link href="assets/css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
 
     <!--Let browser know website is optimized for mobile-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  </head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
 
-  <body class="grey lighten-5">
-        <div class="navbar-fixed">
-            <nav class="black" role="navigation">
-                <div class="nav-wrapper container">
-                    <a id="logo-container" href="#" class="brand-logo"><i class="large material-icons">computer</i></a>
-                    
-                    <ul id="nav-mobile" class="right hide-on-med-and-down">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="search.html">Search</a></li>
-                        <li><a href="mylist.html">My List</a></li>
-                        <li><a href="contact.html">Contact Us</a></li>
-                    </ul>
-                    <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="black material-icons">menu</i></a>
+<body class="grey lighten-5">
+    <div class="navbar-fixed">
+        <nav class="black" role="navigation">
+            <div class="nav-wrapper container">
+                <a id="logo-container" href="#" class="brand-logo"><i class="large material-icons">computer</i></a>
+
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="search.html">Search</a></li>
+                    <li><a href="mylist.html">My List</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i
+                        class="black material-icons">menu</i></a>
             </div>
-            
+
         </nav>
         <ul id="mobile-demo" class="sidenav whitesmoke">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="search.html">Search</a></li>
-                <li><a href="mylist.html">My List</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
-            </ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="search.html">Search</a></li>
+            <li><a href="mylist.html">My List</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
     </div>
-        <section>
-            <div class="col s12 deep-purple darken-4 z-depth-3">
-                <img id="imageSized" class="responsive-img" src="assets/images/galaxytemp.jpg"> <!-- random image -->
-    
-            </div>
-        </section>
-                  <br><br><br>
-                      
-        <div class="container">
-          
-                
-                <div class="row">
-                    <form class="col s12">    
-                    <div class="input-field">
+    <section>
+        <div class="col s12 deep-purple darken-4 z-depth-3">
+            <img id="imageSized" class="responsive-img" src="assets/images/galaxytemp.jpg"> <!-- random image -->
+
+        </div>
+    </section>
+    <br><br><br>
+
+    <div class="container">
+
+
+        <div class="row">
+            <form class="col s12">
+                <div class="input-field">
                     <input id="searchedShow" type="search" required>
                     <label class="label-icon" for="search"><i class="material-icons">search</i></label>
                     <i class="material-icons">close</i>
                     <button class="btn waves-effect black" type="submit" id="searchShowBtn">Search</button>
-                
-                    </div> 
-                    
-                </form>
-                
-                </div>
-
-                <div class="showSeasons">
-                    <div class="card">
-
-                    </div>
-                    
-                
-                </div>
-                    
-                    </div>
 
                 </div>
-                
-                        
-                      
-              
-        
+
+            </form>
+
+        </div>
+
+        <div class="showSeasons">
+            <div class="card">
+                <!-- Seasons here! -->
+            </div>
+        </div>
+    </div>
+
     <!--JavaScript at end of body for optimized loading-->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="assets/javascript/materialize.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase.js"></script>
     <script src="assets/javascript/firebase.js"></script>
     <script src="assets/javascript/aggregator.js"></script>
     <script>
-    $(document).ready(function(){
-    $('.sidenav').sidenav({closeOnClick: true});
-    });
+        $(document).ready(function () {
+            $('.sidenav').sidenav({ closeOnClick: true });
+        });
     </script>
-  </body>
+</body>
+
 </html>
-      
