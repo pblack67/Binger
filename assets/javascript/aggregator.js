@@ -150,7 +150,7 @@ function addSeasonWidgets(show) {
             .addClass("col s8")
             .append(contentDiv, cardActionDiv);
         var rowDiv = $("<div>")
-            .addClass("row")
+            .addClass("card")
             .append(col1Div)
             .append(col2Div);
         cardDiv.append(rowDiv);
