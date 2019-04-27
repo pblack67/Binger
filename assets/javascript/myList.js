@@ -48,6 +48,9 @@ function newUserDataCallback(snapshot) {
             $("#episodeList").empty();
             createWatchList(response.watchList);
             watchList = response.watchList;
+            if (watchList.length > 0) {
+                $("#episodeImage").attr("src", watchList[0].poster);
+            }
         }
     }
 }
