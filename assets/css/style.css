@@ -20,7 +20,7 @@
  #imageSized {
    width: 200%;
  }
- 
+
  html {
   height: 100%;
   box-sizing: border-box;
@@ -69,3 +69,10 @@ body {
   font-family: 'Rajdhani', sans-serif;
 }
 
+.herozone {
+  background-image: url('../images/secondimageattempt.jpg');
+  height: 250px;
+  max-width: 100%;
+  background-size: cover;
+
+}
