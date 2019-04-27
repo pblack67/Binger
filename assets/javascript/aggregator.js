@@ -14,6 +14,10 @@ var shows = [];
 var currentShow = {};
 var watchList = [];
 
+//need to update with materialize classes
+//function gets CastList and displays on either Search or Episode Page
+//Data should appear on the left side of main content, next to search results
+//or next to the episodes list. 
 function generateCastList(id) {
     var myURL = movieDBAPI + "tv/" + id + "/credits" + movieDBAPISuffix;
     console.log(myURL);
@@ -124,7 +128,8 @@ function findShow(showName) {
 }
 
 //add seasons on search page using forEach
-//each currently displayed in a new div, working on fixing card display
+//MATERIALIZE USED. Please follow class naming and setup for materialize
+//will be moving div to the right to display character content on the left
 function addSeasonWidgets(show) {
     var cardDiv = $("<div>")
         .addClass(".card");
@@ -151,10 +156,13 @@ function addSeasonWidgets(show) {
         var col2Div = $("<div>")
             .addClass("col s8")
             .append(contentDiv, cardActionDiv);
+        var col3Div = $("<div>")
+            .addClass("col s2");
         var rowDiv = $("<div>")
             .addClass("card")
             .append(col1Div)
-            .append(col2Div);
+            .append(col2Div)
+            .append(col3Div);
         cardDiv.append(rowDiv);
     });
 
