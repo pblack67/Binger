@@ -8,6 +8,7 @@ var wikipediaURL = "https://en.wikipedia.org/wiki/";
 var movieDBAPI = "https://api.themoviedb.org/3/";
 var movieDBAPISuffix = "?api_key=29a27fe8b3f85bad1ab054a647529d57";
 var movieDBAPISourceSuffix = "&external_source=imdb_id";
+var movieDBPictureAPI = "https://image.tmdb.org/t/p/w185";
 
 var shows = [];
 var currentShow = {};
@@ -98,7 +99,8 @@ function getEpisodes(showName, seasonNumber) {
                     name: response.name,
                     episodeNumber: response.episode_number,
                     seasonNumber: response.season_number,
-                    description: response.overview
+                    description: response.overview,
+                    poster: currentShow.poster
                 }
                 var episodes = currentShow.seasons[response.season_number - 1].episodes;
                 episodes[response.episode_number - 1] = myEpisode;
@@ -168,6 +170,10 @@ function addSeasonWidgets(show) {
     $(".showSeasons").append(cardDiv);
 }
 
+function setPoster(poster) {
+    $("#poster").attr("src", poster);
+}
+
 // Load the seasons, iterate each season to get the episode info 
 function getSeasonDetails(tmdbID) {
     console.log("getSeasonDetails");
@@ -187,7 +193,8 @@ function getSeasonDetails(tmdbID) {
                 name: response.name,
                 network: response.networks[0].name,
                 description: response.overview,
-                seasons: []
+                seasons: [],
+                poster: movieDBPictureAPI + response.poster_path
             };
 
             // Create seasons
@@ -218,6 +225,7 @@ function getSeasonDetails(tmdbID) {
         }
         addSeasonWidgets(show);
         generateCastList(tmdbID);
+        setPoster(show.poster);
     });
 }
 
