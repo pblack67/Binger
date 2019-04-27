@@ -262,6 +262,7 @@ function cardActionButtonClicked(event) {
 function newUserDataCallback(snapshot) {
     var response = snapshot.val();
     console.log("Watchlist changed:", response);
+    watchList = [];
     if (response !== null) {
         if (response.watchList !== undefined) {
             watchList = response.watchList;

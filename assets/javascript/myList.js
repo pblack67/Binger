@@ -32,6 +32,7 @@ function createWatchList(watchList) {
 function newUserDataCallback(snapshot) {
     var response = snapshot.val();
     console.log("Watchlist changed:", response);
+    $("#episodeList").empty();
     if (response !== null) {
         if (response.watchList !== undefined) {
             $("#episodeList").empty();
