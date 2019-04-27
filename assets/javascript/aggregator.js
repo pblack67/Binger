@@ -170,6 +170,10 @@ function setPoster(poster) {
     $("#poster").attr("src", poster);
 }
 
+function setPoster(poster) {
+    $("#poster").attr("src", poster);
+}
+
 // Load the seasons, iterate each season to get the episode info 
 function getSeasonDetails(tmdbID) {
     console.log("getSeasonDetails");
