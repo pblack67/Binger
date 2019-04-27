@@ -354,6 +354,16 @@ function newUserDataCallback(snapshot) {
     }
 }
 
+function generateCastListButtonClicked(event) {
+    var id = $("#generateCastListText").val();
+    var myURL = movieDBAPI + "tv/" + id + "/credits" + movieDBAPISuffix;
+    console.log(myURL);
+    $.get(myURL).then(function (response) {
+        console.log(response);
+        $("#generateCastListResults").text(JSON.stringify(response, null, 2));
+    });
+}
+
 $(function () {
     $("#searchShowButton").on("click", searchShowButtonClicked);
     $("#searchShowDetailsButton").on("click", searchShowDetailsButtonClicked);
@@ -364,6 +374,7 @@ $(function () {
     $("#generateSeasonListButton").on("click", generateSeasonListButtonClicked);
     $("#dumpShowsButton").on("click", dumpShowsButtonClicked);
     $("#generateEpisodesButton").on("click", generateEpisodesButtonClicked);
+    $("#generateCastListButton").on("click", generateCastListButtonClicked);
 
     userDataRef.on("value", newUserDataCallback);
 });

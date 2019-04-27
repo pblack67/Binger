@@ -13,6 +13,27 @@ var shows = [];
 var currentShow = {};
 var watchList = [];
 
+function generateCastList(id) {
+    var myURL = movieDBAPI + "tv/" + id + "/credits" + movieDBAPISuffix;
+    console.log(myURL);
+    $("#castList").empty();
+    $.get(myURL).then(function (response) {
+        console.log(response);
+        var list = $("<ul>");
+        response.cast.forEach(function (role) {
+            var actorURL = wikipediaURL + role.name.trim().replace(" ", "_");
+            var actorAnchor = $("<a>")
+                .attr("href", actorURL)
+                .attr("target", "_blank")
+                .text(role.name);
+            var characterDiv = $("<li>").text(role.character + ": ");
+            characterDiv.append(actorAnchor);
+            list.append(characterDiv);
+        });
+        $("#castList").append(list);
+    });
+}
+
 function isAllEpisodesDownloaded(episodes) {
     var result = true;
     episodes.forEach(function (episode) {
@@ -188,6 +209,7 @@ function getSeasonDetails(tmdbID) {
             shows.push(show);
         }
         addSeasonWidgets(show);
+        generateCastList(tmdbID);
     });
 }
 
