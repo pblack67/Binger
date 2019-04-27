@@ -1,57 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Aggregator API Test</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
+
 <body>
     <h1>Aggregator API Testing Page</h1>
 
     <input type="text" id=showText>
-    <button id="searchShowButton">Search Episodate Show</button>
+    <button id="searchShowButton" class="btn btn-primary">Search Episodate Show</button>
     <div>
         <pre id="searchShowResults"></pre>
     </div>
 
     <input type="text" id=showDetailsText>
-    <button id="searchShowDetailsButton">Search Episodate Show Details</button>
+    <button id="searchShowDetailsButton" class="btn btn-primary">Search Episodate Show Details</button>
     <div>
         <pre id="searchShowDetailsResults"></pre>
     </div>
 
     <input type="text" id=showOMDBText>
-    <button id="searchOMDBButton">Search OMDB for Cast Info</button>
+    <button id="searchOMDBButton" class="btn btn-primary">Search OMDB for Cast Info</button>
     <div>
         <pre id="searchOMDBResults"></pre>
     </div>
 
     <input type="text" id=showMovieDBText>
-    <button id="searchMovieDBButton">Search Movie DB for Basic Show Info</button>
+    <button id="searchMovieDBButton" class="btn btn-primary">Search Movie DB for Basic Show Info</button>
     <div>
         <pre id="searchMovieDBResults"></pre>
     </div>
 
     <input type="text" id=showMovieDBDetailsText>
-    <button id="searchMovieDBDetailsButton">Search Movie DB for Detail Show Info</button>
+    <button id="searchMovieDBDetailsButton" class="btn btn-primary">Search Movie DB for Detail Show Info</button>
     <div>
         <pre id="searchMovieDBDetailsResults"></pre>
     </div>
 
     <input type="text" id=showMovieDBEpisodeText>
-    <button id="searchMovieDBEpisodeButton">Search Movie DB for Episode Info</button>
+    <button id="searchMovieDBEpisodeButton" class="btn btn-primary">Search Movie DB for Episode Info</button>
     <div>
         <pre id="searchMovieDBEpisodeResults"></pre>
     </div>
 
-    <input type="text" id=generateEpisodeListText>
-    <button id="generateEpisodeListButton">Generate Episode List</button>
+    <input type="text" id=generateSeasonListText>
+    <button id="generateSeasonListButton" class="btn btn-primary">Generate Season List</button>
     <div>
-        <pre id="generateEpisodeListResults"></pre>
+        <pre id="generateSeasonListResults"></pre>
     </div>
 
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" ></script>
+    <button id="dumpShowsButton" class="btn btn-primary">Dump Shows Array to Console</button>
+    <div>
+        <pre id="dumpShowsResults"></pre>
+    </div>
+
+    <input type="text" id=generateCastListText>
+    <button id="generateCastListButton" class="btn btn-primary">Generate Cast List</button>
+    <div>
+        <pre id="generateCastListResults"></pre>
+    </div>
+
+    <form>
+        <div class="form-group">
+            <label for="episodeShowName">Show Name</label>
+            <input type="text" class="form-control" id="episodeShowName">
+
+        </div>
+        <div class="form-group">
+            <label for="episodeSeason">Season Number </label>
+            <input type="text" class="form-control" id="episodeSeason">
+        </div>
+        <button id="generateEpisodesButton" type="submit" class="btn btn-primary">Add Episodes to Watchlist</button>
+    </form>
+    <div>
+        <pre id="generateEpisodesResults"></pre>
+    </div>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase.js"></script>
+    <script src="assets/javascript/firebase.js"></script>
     <script src="assets/javascript/apitest.js"></script>
 </body>
+
 </html>
