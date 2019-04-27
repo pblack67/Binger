@@ -27,6 +27,7 @@ function generateCastList(id) {
         var list = $("<ul>");
         response.cast.forEach(function (role) {
             var actorURL = wikipediaURL + role.name.trim().replace(" ", "_");
+            
             var actorAnchor = $("<a>")
                 .attr("href", actorURL)
                 .attr("target", "_blank")
@@ -34,8 +35,11 @@ function generateCastList(id) {
             var characterDiv = $("<li>").text(role.character + ": ");
             characterDiv.append(actorAnchor);
             list.append(characterDiv);
+        
         });
+
         $("#castList").append(list);
+        $(".addCast").append($("#castLit"));
     });
 }
 
@@ -151,23 +155,15 @@ function addSeasonWidgets(show) {
         var contentDiv = $("<div>")
             .addClass("card-content")
             .append(contentSpan, contentP);
-        var col1Div = $("<div>")
-            .addClass("col s2");
-        var col2Div = $("<div>")
-            .addClass("col s8")
-            .append(contentDiv, cardActionDiv);
-        var col3Div = $("<div>")
-            .addClass("col s2");
         var rowDiv = $("<div>")
             .addClass("card")
-            .append(col1Div)
-            .append(col2Div)
-            .append(col3Div);
-        cardDiv.append(rowDiv);
+            .append(contentDiv, cardActionDiv)
+            cardDiv.append(rowDiv);
     });
 
 
     $(".showSeasons").append(cardDiv);
+    $(".addSeason").append($(".addSeason"));
 }
 
 function setPoster(poster) {
