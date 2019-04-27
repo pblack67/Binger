@@ -75,6 +75,15 @@ function addEpisodesToWatchList(episodes) {
         }
     });
 }
+function watchListComparator(episode1, episode2) {
+    if (episode1.showName == episode2.showName) {
+        return 0;
+    } else if (episode1.showName > episode2.showName) {
+        return 1;
+    } else {
+        return -1;
+    }
+}
 
 // Requires use of global variable currentShow
 function getEpisodes(showName, seasonNumber) {
@@ -111,6 +120,7 @@ function getEpisodes(showName, seasonNumber) {
                 console.log("Episode", episodes[response.episode_number - 1]);
                 if (isAllEpisodesDownloaded(episodes)) {
                     addEpisodesToWatchList(episodes);
+                    watchList.sort(watchListComparator);
                     saveWatchList(watchList);
                 }
             });
@@ -125,7 +135,6 @@ function findShow(showName) {
     shows.forEach(function (show) {
         if (showName === show.name) {
             myShow = show;
-            console.log("Found the show!");
         }
     });
     return myShow;
