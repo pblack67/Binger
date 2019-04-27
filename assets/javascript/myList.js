@@ -1,19 +1,16 @@
-// {/* <div class="card">
-// <div class="card-content activator grey-text text-darken-4">
-//     <span class="card-title">Doctor Who Series 11 Episode 4<i
-//             class="material-icons right">more_vert</i></span>
-//     <p><a href="#">A link to Wiki or some other place</a></p>
-// </div>
-// <div class="card-reveal">
-//     <span class="card-title grey-text text-darken-4"><i
-//             class="material-icons right">close</i></span>
-//     <p>The Doctor, Yaz, Graham, and Ryan find their way back to Yorkshire only to find something is
-//         stirring amidst the eight-legged arachnid population of Sheffield.</p>
-// </div>
-// </div> */}
-
 function createWatchList(watchList) {
     watchList.forEach(function (episode) {
+        var descriptionP = $("<p>")
+            .text(episode.description);
+        var closeIcon = $("<i>")
+            .addClass("material-icons right")
+            .text("close");
+        var cardSpan = $("<span>")
+            .addClass("card-title")
+            .append(closeIcon);
+        var cardRevealDiv = $("<div>")
+            .addClass("card-reveal")
+            .append(cardSpan, descriptionP);
         var moreIcon = $("<i>")
             .addClass("material-icons right")
             .text("more_vert");
@@ -27,7 +24,7 @@ function createWatchList(watchList) {
             .append(cardSpan);
         var cardDiv = $("<div>")
             .addClass("card")
-            .append(cardContentDiv);
+            .append(cardContentDiv, cardRevealDiv);
         $("#episodeList").append(cardDiv);
     });
 }

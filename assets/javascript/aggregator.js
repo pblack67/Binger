@@ -13,11 +13,6 @@ var shows = [];
 var currentShow = {};
 var watchList = [];
 
-function addEpisodeWidgets(episodes) {
-    console.log("addEpisodeWidgets");
-    // TODO Create episode widgets here and dynamically add to html
-}
-
 function isAllEpisodesDownloaded(episodes) {
     var result = true;
     episodes.forEach(function (episode) {
@@ -26,6 +21,29 @@ function isAllEpisodesDownloaded(episodes) {
         }
     });
     return result;
+}
+
+function isEpisodeInWatchList(episode) {
+    for (var i = 0; i < watchList.length; i++) {
+        listItem = watchList[i];
+        if (listItem.showName === episode.showName) {
+            if (listItem.seasonNumber === episode.seasonNumber) {
+                if (listItem.episodeNumber === episode.episodeNumber) {
+                    return true;
+                }
+            }
+        }
+    }
+    return false;
+}
+
+function addEpisodesToWatchList(episodes) {
+    // watchList = watchList.concat(episodes);
+    episodes.forEach(function(episode) {
+        if (!isEpisodeInWatchList(episode)) {
+            watchList.push(episode);
+        }
+    });
 }
 
 // Requires use of global variable currentShow
@@ -61,8 +79,7 @@ function getEpisodes(showName, seasonNumber) {
                 episodes[response.episode_number - 1] = myEpisode;
                 console.log("Episode", episodes[response.episode_number - 1]);
                 if (isAllEpisodesDownloaded(episodes)) {
-                    // addEpisodeWidgets(episodes);
-                    watchList = watchList.concat(episodes);
+                    addEpisodesToWatchList(episodes);
                     saveWatchList(watchList);
                 }
             });
