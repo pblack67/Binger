@@ -7,11 +7,11 @@ var config = {
     storageBucket: "binger-95cf5.appspot.com",
     messagingSenderId: "956862325677"
 };
-firebase.initializeApp(config);
 
-var database = firebase.database();
+var database = null; 
 
-var userDataRef = database.ref("/userData");
+var userName = null;
+var userDataRef = null;
 
 function saveWatchList(watchList) {
     console.log("Saving WatchList:", watchList);
@@ -23,3 +23,19 @@ function saveWatchList(watchList) {
     console.log(result);
 }
 
+function initializeFirebase() {
+    firebase.initializeApp(config);
+
+    database = firebase.database();
+
+    userName = localStorage.getItem("loginEmail");
+    console.log("loginEmail", userName);
+    userDataRef = database.ref("/" + userName);
+}
+
+function setUserName() {
+    var userName = localStorage.getItem("userName");
+    if ((userName !== null) && (userName !== undefined)) {
+        $("#userName").text(userName);       
+    }
+}

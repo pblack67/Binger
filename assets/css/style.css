@@ -76,3 +76,31 @@ body {
   background-size: cover;
 
 }
+
+#loginBackground {
+  background-image: url('../images/secondimageattempt.jpg');
+  /* height: 250px;
+  max-width: 100%; */
+  background-size: cover;
+}
+
+#welcomeBack {
+  color: black;
+  background-color: whitesmoke;
+  padding: 0 1em;
+  border: 1px solid black;
+  border-radius: 25px;
+}
+
+#loginForm {
+  /* color: whitesmoke;
+  background-color: black; */
+  background-color: whitesmoke;
+  padding: 1em;
+  border: 1px solid black;
+  border-radius: 25px;
+}
+
+#logoutButton {
+  margin: 0 0 1em 0;
+}
