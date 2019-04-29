@@ -85,6 +85,9 @@ function setWatchedButtonClicked(event) {
 }
 
 $(function () {
+    initializeFirebase();
+    setUserName();
+    
     $(document).on("click", ".setWatchedButton", setWatchedButtonClicked);
 
     userDataRef.on("value", newUserDataCallback);

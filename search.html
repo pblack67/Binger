@@ -10,6 +10,7 @@
     <link href="assets/css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Rajdhani" rel="stylesheet">
 
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -24,9 +25,11 @@
 
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="index.html">Home</a></li>
+                    <li><a href="discover.html">Discover</a></li>
                     <li><a href="search.html">Search</a></li>
                     <li><a href="mylist.html">My List</a></li>
                     <li><a href="contact.html">Contact Us</a></li>
+                    <li><em><span id="userName"></span></em></li>
                 </ul>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i
                         class="black material-icons">menu</i></a>
@@ -41,8 +44,8 @@
         </ul>
     </div>
     <section>
-        <div class="col s12 deep-purple darken-4 z-depth-3">
-            <img id="imageSized" class="responsive-img" src="assets/images/tablet.jpg"> <!-- random image -->
+        <div class="col s12 deep-purple darken-4 z-depth-3 herozone">
+            <!-- <img id="imageSized" class="responsive-img" src="assets/images/tablet.jpg"> random image -->
 
         </div>
     </section>
@@ -88,7 +91,8 @@
             <script type="text/javascript"
                 src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
             <script type="text/javascript" src="assets/javascript/materialize.js"></script>
-            <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase.js"></script>
+            <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-app.js"></script>
+            <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-database.js"></script>
             <script src="assets/javascript/firebase.js"></script>
             <script src="assets/javascript/aggregator.js"></script>
             <script>

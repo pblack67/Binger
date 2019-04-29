@@ -39,7 +39,7 @@ function generateCastList(id) {
         });
 
         $("#castList").append(list);
-        $(".addCast").append($("#castLit"));
+        $(".addCast").append($("#castList"));
     });
 }
 
@@ -74,6 +74,26 @@ function addEpisodesToWatchList(episodes) {
             watchList.push(episode);
         }
     });
+}
+
+function seasonComparator(episode1, episode2) {
+    if (episode1.seasonNumber == episode2.seasonNumber) {
+        return 0;
+    } else if (episode1.seasonNumber > episode2.seasonNumber) {
+        return 1;
+    } else {
+        return -1;
+    }
+}
+
+function showNameComparator(episode1, episode2) {
+    if (episode1.showName == episode2.showName) {
+        return seasonComparator(episode1, episode2);
+    } else if (episode1.showName > episode2.showName) {
+        return 1;
+    } else {
+        return -1;
+    }
 }
 
 // Requires use of global variable currentShow
@@ -111,6 +131,7 @@ function getEpisodes(showName, seasonNumber) {
                 console.log("Episode", episodes[response.episode_number - 1]);
                 if (isAllEpisodesDownloaded(episodes)) {
                     addEpisodesToWatchList(episodes);
+                    watchList.sort(showNameComparator);
                     saveWatchList(watchList);
                 }
             });
@@ -125,7 +146,6 @@ function findShow(showName) {
     shows.forEach(function (show) {
         if (showName === show.name) {
             myShow = show;
-            console.log("Found the show!");
         }
     });
     return myShow;
@@ -283,6 +303,8 @@ function newUserDataCallback(snapshot) {
 }
 
 $(function () {
+    initializeFirebase();
+    setUserName();
     $(".showSeasons").hide();
     $("#searchShowBtn").on("click", searchShowBtnClicked);
     $(document).on("click", ".addToWatchList", cardActionButtonClicked);
