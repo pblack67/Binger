@@ -8,19 +8,21 @@ var config = {
     messagingSenderId: "956862325677"
 };
 
-var database = null; 
+var database = null;
 
 var userName = null;
 var userDataRef = null;
 
 function saveWatchList(watchList) {
     console.log("Saving WatchList:", watchList);
-    var result = userDataRef.set(
-        {
-            watchList
-        }
-    );
-    console.log(result);
+    if (userName !== null) {
+        var result = userDataRef.set(
+            {
+                watchList
+            }
+        );
+        console.log(result);
+    }
 }
 
 function initializeFirebase() {
@@ -36,6 +38,6 @@ function initializeFirebase() {
 function setUserName() {
     var userName = localStorage.getItem("userName");
     if ((userName !== null) && (userName !== undefined)) {
-        $("#userName").text(userName);       
+        $("#userName").text(userName);
     }
 }

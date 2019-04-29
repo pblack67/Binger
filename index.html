@@ -76,12 +76,12 @@
                             <label for="email">Email</label>
                         </div>
                     </div>
+                    <h5 id="errorMessage"  style="display: none;">Please fill in all fields</h5>
                     <button type="submit" id="loginButton" class="btn waves-effect black">Login</button>
                 </form>
                 <div id="welcomeBack" class="center-align" style="display: none;">
-                    <h1>
-                        Welcome, <span id="welcomeUserName"></span>
-                    </h1>
+                    <h1>Welcome, <span id="welcomeUserName"></span></h1>
+                    <br>
                     <button id="logoutButton" class="btn waves-effect black">Logout</button>
                 </div>
             </div>
@@ -95,7 +95,8 @@
     </div>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="assets/javascript/materialize.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-database.js"></script>
     <script src="assets/javascript/firebase.js"></script>
     <script src="assets/javascript/login.js"></script>
     <script>
