@@ -14,7 +14,7 @@ function loginButtonClicked(event) {
 
         $("#email").val("");
         $("#first_name").val("");
-        $("#last_name").val("");       
+        $("#last_name").val("");
     } else {
         $("#errorMessage").show();
     }
