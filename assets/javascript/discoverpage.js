@@ -38,3 +38,6 @@ var settings = {
     }
   });
 
+$(function() {
+  setUserName();
+});
