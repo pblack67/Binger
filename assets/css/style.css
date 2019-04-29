@@ -72,7 +72,7 @@ body {
 .herozone {
   background-image: url('../images/secondimageattempt.jpg');
   height: 250px;
-  max-width: 100%;
+  /* max-width: 100%; */
   background-size: cover;
 
 }

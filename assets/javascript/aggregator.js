@@ -39,7 +39,7 @@ function generateCastList(id) {
         });
 
         $("#castList").append(list);
-        $(".addCast").append($("#castLit"));
+        $(".addCast").append($("#castList"));
     });
 }
 
