@@ -69,3 +69,6 @@ var settings = {
 
   });
 
+$(function() {
+  setUserName();
+});
