@@ -16,8 +16,8 @@ var settings = {
     "crossDomain": true,
     "url": "https://api.themoviedb.org/3/tv/airing_today?page=1&language=en-US&api_key=504aa7272cfe840a68ff0f64c625777c",
     "method": "GET",
-    "headers": {},
-    "data": "{}"
+    //"headers": {},
+    //"data": "{}"
   }
   
   $.ajax(settings).done(function (response) {
@@ -29,12 +29,43 @@ var settings = {
     console.log(response.results[i].first_air_date);
     console.log(response.results[i].overview);
 
-    $(".todayShows").append(response.results[i].original_name + "<br>");
-    $(".todayShows").append(response.results[i].popularity + "<br>");
-    $(".todayShows").append(response.results[i].first_air_date + "<br>");
-    $(".todayShows").append(response.results[i].overview + "<br> <br>");
-  
+    // $(".todayShows").append(response.results[i].original_name + "<br>");
+    // $(".todayShows").append(response.results[i].popularity + "<br>");
+    // $(".todayShows").append(response.results[i].first_air_date + "<br>");
+    // $(".todayShows").append(response.results[i].overview + "<br> <br>");
+    var image = $("<img>")
+        .addClass("image-sized")
+        .attr("src", "assets/images/testimage.jpg");
+    var cardImageDiv = $("<div>")
+        .addClass("card-image")
+        .append(image);
 
-    }
+    var discoverContent = $("<p>").text(response.results[i].overview);
+
+    var newCardContent = $("<div>")
+        .addClass("card-content")
+        .append(discoverContent);
+
+    var moreInfo = $("<p>").text(response.results[i].original_name);
+
+    var newCardAction = $("<div>")
+        .addClass("card-action")
+        .append(moreInfo);
+
+    var cardStackedDiv = $("<div>")
+    .addClass("card-stacked")
+    .append(newCardContent, newCardAction);
+
+     var horizontal = $("<div>")
+     .addClass("card horizontal divBlocks")
+     .append(cardImageDiv, cardStackedDiv) 
+     $(".displayToday").append(horizontal);  
+     
+    };
+    
+    
+    $(".displayToday").append($(".displayToday"));
+    
+
   });
 
