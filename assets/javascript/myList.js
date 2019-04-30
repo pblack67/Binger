@@ -1,4 +1,5 @@
 var watchList = [];
+var filteredWatchList = [];
 
 function createWatchList(watchList) {
     watchList.forEach(function (episode) {
@@ -39,24 +40,42 @@ function createWatchList(watchList) {
     });
 }
 
+function initializeShowSelector() {
+    var showList = [];
+    $("#showSelector").empty();
+    watchList.forEach(function (episode) {
+        if (showList.indexOf(episode.showName) == -1) {
+            showList.push(episode.showName);
+            var option = $("<option>")
+                .attr("value", episode.showName)
+                .text(episode.showName);
+            $("#showSelector").append(option);
+        }
+    });
+    console.log("ShowList", showList);
+}
+
 function newUserDataCallback(snapshot) {
     var response = snapshot.val();
-    console.log("Watchlist changed:", response);
     $("#episodeList").empty();
     if (response !== null) {
         if (response.watchList !== undefined) {
             $("#episodeList").empty();
-            createWatchList(response.watchList);
             watchList = response.watchList;
-            if (watchList.length > 0) {
-                $("#episodeImage").attr("src", watchList[0].poster);
+            initializeShowSelector();
+            $('select').formSelect();
+            filteredWatchList = filterWatchList(watchList, $("#showSelector").val());
+            createWatchList(filteredWatchList);
+            if (filteredWatchList.length > 0) {
+                console.log("Series Poster URL: ", filteredWatchList[0].poster);
+                $("#episodeImage").attr("src", filteredWatchList[0].poster);
             }
         }
     }
 }
 
 function findEpisode(showName, seasonNumber, episodeNumber) {
-    for (var i = 0; i < watchList.length; i++){
+    for (var i = 0; i < watchList.length; i++) {
         var myEpisode = watchList[i];
         if (myEpisode.showName === showName) {
             if (myEpisode.seasonNumber == seasonNumber) {
@@ -84,11 +103,31 @@ function setWatchedButtonClicked(event) {
     }
 }
 
+function filterWatchList(watchList, showName) {
+    var filtered = [];
+    watchList.forEach(function (episode) {
+        if (episode.showName == showName) {
+            filtered.push(episode);
+        }
+    });
+    return filtered;
+}
+
+function showSelectorChanged(event) {
+    var showName = event.target.value;
+    filteredWatchList = filterWatchList(watchList, showName);
+    $("#episodeList").empty();
+    createWatchList(filteredWatchList);
+    if (filteredWatchList.length > 0) {
+        $("#episodeImage").attr("src", filteredWatchList[0].poster);
+    }
+}
+
 $(function () {
     initializeFirebase();
     setUserName();
-    
-    $(document).on("click", ".setWatchedButton", setWatchedButtonClicked);
 
+    $(document).on("click", ".setWatchedButton", setWatchedButtonClicked);
+    $(document).on("change", "#showSelector", showSelectorChanged)
     userDataRef.on("value", newUserDataCallback);
 })
