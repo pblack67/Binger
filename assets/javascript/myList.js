@@ -1,41 +1,63 @@
 var watchList = [];
 var filteredWatchList = [];
 
-function createWatchList(watchList) {
+function createEpisodeCard(episode, element) {
+    var setWatchedButton = $("<button>")
+        .text("Watched")
+        .addClass("btn waves-effect black setWatchedButton")
+        .attr("data-showName", episode.showName)
+        .attr("data-seasonNumber", episode.seasonNumber)
+        .attr("data-episodeNumber", episode.episodeNumber);
+    var descriptionP = $("<p>")
+        .text(episode.description);
+    var closeIcon = $("<i>")
+        .addClass("material-icons right")
+        .text("close");
+    var cardSpan = $("<span>")
+        .addClass("card-title")
+        .append(closeIcon);
+    var cardRevealDiv = $("<div>")
+        .addClass("card-reveal")
+        .append(cardSpan, descriptionP);
+    var moreIcon = $("<i>")
+        .addClass("material-icons right")
+        .text("more_vert");
+    var cardSpan = $("<span>")
+        .addClass("card-title")
+        .text(episode.showName + " (" + episode.network + ") Season "
+            + episode.seasonNumber + " " + " Episode " + episode.episodeNumber)
+        .append(moreIcon);
+    var cardContentDiv = $("<div>")
+        .addClass("card-content activator grey-text text-darken-4")
+        .append(cardSpan, setWatchedButton);
+    var cardDiv = $("<div>")
+        .addClass("card")
+        .append(cardContentDiv, cardRevealDiv);
+    element.append(cardDiv);
+}
+
+function createSeasonList(watchList) {
+    var seasons = [];
+    $("#seasonCollapse").empty();
+    var currentBody = null;
     watchList.forEach(function (episode) {
         if (!episode.watched) {
-            var setWatchedButton = $("<button>")
-                .text("Watched")
-                .addClass("btn waves-effect black setWatchedButton")
-                .attr("data-showName", episode.showName)
-                .attr("data-seasonNumber", episode.seasonNumber)
-                .attr("data-episodeNumber", episode.episodeNumber);
-            var descriptionP = $("<p>")
-                .text(episode.description);
-            var closeIcon = $("<i>")
-                .addClass("material-icons right")
-                .text("close");
-            var cardSpan = $("<span>")
-                .addClass("card-title")
-                .append(closeIcon);
-            var cardRevealDiv = $("<div>")
-                .addClass("card-reveal")
-                .append(cardSpan, descriptionP);
-            var moreIcon = $("<i>")
-                .addClass("material-icons right")
-                .text("more_vert");
-            var cardSpan = $("<span>")
-                .addClass("card-title")
-                .text(episode.showName + " (" + episode.network + ") Season "
-                    + episode.seasonNumber + " " + " Episode " + episode.episodeNumber)
-                .append(moreIcon);
-            var cardContentDiv = $("<div>")
-                .addClass("card-content activator grey-text text-darken-4")
-                .append(cardSpan, setWatchedButton);
-            var cardDiv = $("<div>")
-                .addClass("card")
-                .append(cardContentDiv, cardRevealDiv);
-            $("#episodeList").append(cardDiv);
+            if (seasons.indexOf(episode.seasonNumber) == -1) {
+                seasons.push(episode.seasonNumber);
+                var header = $("<div>")
+                    .addClass("collapsible-header")
+                    .text("Season " + episode.seasonNumber);
+                currentBody = $("<div>")
+                    .addClass("collapsible-body");
+                var listItem = $("<li>")
+                    .append(header)
+                    .append(currentBody);
+                $("#seasonCollapse").append(listItem);
+            }
+
+            if (currentBody !== null) {
+                createEpisodeCard(episode, currentBody);
+            }
         }
     });
 }
@@ -52,7 +74,6 @@ function initializeShowSelector() {
             $("#showSelector").append(option);
         }
     });
-    console.log("ShowList", showList);
 }
 
 function newUserDataCallback(snapshot) {
@@ -65,9 +86,8 @@ function newUserDataCallback(snapshot) {
             initializeShowSelector();
             $('select').formSelect();
             filteredWatchList = filterWatchList(watchList, $("#showSelector").val());
-            createWatchList(filteredWatchList);
+            createSeasonList(filteredWatchList);
             if (filteredWatchList.length > 0) {
-                console.log("Series Poster URL: ", filteredWatchList[0].poster);
                 $("#episodeImage").attr("src", filteredWatchList[0].poster);
             }
         }
@@ -90,8 +110,6 @@ function findEpisode(showName, seasonNumber, episodeNumber) {
 }
 
 function setWatchedButtonClicked(event) {
-    console.log("setWatchedButtonClicked");
-    console.log(this);
     var showName = $(this).attr("data-showName");
     var seasonNumber = $(this).attr("data-seasonNumber");
     var episodeNumber = $(this).attr("data-episodeNumber");
@@ -117,7 +135,7 @@ function showSelectorChanged(event) {
     var showName = event.target.value;
     filteredWatchList = filterWatchList(watchList, showName);
     $("#episodeList").empty();
-    createWatchList(filteredWatchList);
+    createSeasonList(filteredWatchList);
     if (filteredWatchList.length > 0) {
         $("#episodeImage").attr("src", filteredWatchList[0].poster);
     }
@@ -130,4 +148,6 @@ $(function () {
     $(document).on("click", ".setWatchedButton", setWatchedButtonClicked);
     $(document).on("change", "#showSelector", showSelectorChanged)
     userDataRef.on("value", newUserDataCallback);
+
+    $('.collapsible').collapsible();
 })
