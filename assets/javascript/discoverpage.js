@@ -70,5 +70,8 @@ var settings = {
   });
 
 $(function() {
+  $("#logout").on("click", logoutButtonClicked);
   setUserName();
+  checkLoginStatus();
+  $(".dropdown-trigger").dropdown();
 });

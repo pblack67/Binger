@@ -36,8 +36,41 @@ function initializeFirebase() {
 }
 
 function setUserName() {
-    var userName = localStorage.getItem("userName");
+    userName = localStorage.getItem("userName");
     if ((userName !== null) && (userName !== undefined)) {
         $("#userName").text(userName);
+        $("#logoutAnchor").show();
+    } else {
+        $("#userName").text("");
+        $("#logoutAnchor").hide();
+    }
+}
+
+function initializeNames() {
+    setUserName();
+
+    var email = localStorage.getItem("loginEmail");
+    if ((email == null) || (email == undefined)) {
+        $("#loginForm").show();
+        $("#welcomeBack").hide();
+    } else {
+        $("#loginForm").hide();
+        $("#welcomeBack").show();
+        var userName = localStorage.getItem("userName");
+        $("#welcomeUserName").text(userName + "!");
+    }
+}
+
+function logoutButtonClicked() {
+    console.log("logoutButtonClicked");
+    localStorage.removeItem("loginEmail");
+    localStorage.removeItem("userName");
+    userName = null;
+    window.location.href = "index.html";
+}
+
+function checkLoginStatus() {
+    if (userName == null) {
+        window.location.href = "index.html";
     }
 }

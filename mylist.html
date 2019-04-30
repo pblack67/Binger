@@ -19,7 +19,9 @@
 
 <body class="grey lighten-5">
     <div class="navbar-fixed">
-
+        <ul id="dropdown1" class="dropdown-content">
+            <li><a id="logout" href="#!">Logout</a></li>
+        </ul>
         <nav class="black" role="navigation">
             <div class="nav-wrapper container">
                 <a id="logo-container" href="#" class="brand-logo">The Binger<i
@@ -30,7 +32,8 @@
                     <li><a href="search.html">Search</a></li>
                     <li><a href="mylist.html">My List</a></li>
                     <li><a href="contact.html">Contact Us</a></li>
-                    <li><em><span id="userName"></span></em></li>
+                    <li><a id="logoutAnchor" class="dropdown-trigger" href="#!" data-target="dropdown1"><span
+                        id="userName"></span><i class="material-icons right">arrow_drop_down</i></a>
                 </ul>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i
                         class="black material-icons">menu</i></a>

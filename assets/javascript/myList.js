@@ -84,7 +84,6 @@ function newUserDataCallback(snapshot) {
         if (response.watchList !== undefined) {
             var showSelectorValue = $("#showSelector").val();
             var openSelectorID = $(".active").attr("id");
-            console.log(openSelectorID);
 
             $("#episodeList").empty();
             watchList = response.watchList;
@@ -156,7 +155,11 @@ function showSelectorChanged(event) {
 
 $(function () {
     initializeFirebase();
+
+    $("#logout").on("click", logoutButtonClicked);
     setUserName();
+    checkLoginStatus();
+    $(".dropdown-trigger").dropdown();
 
     $(document).on("click", ".setWatchedButton", setWatchedButtonClicked);
     $(document).on("change", "#showSelector", showSelectorChanged)
