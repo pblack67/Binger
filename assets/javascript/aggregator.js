@@ -9,6 +9,7 @@ var movieDBAPI = "https://api.themoviedb.org/3/";
 var movieDBAPISuffix = "?api_key=29a27fe8b3f85bad1ab054a647529d57";
 var movieDBAPISourceSuffix = "&external_source=imdb_id";
 var movieDBPictureAPI = "https://image.tmdb.org/t/p/w185";
+var trailerAPI = "https://developers.google.com/youtube/v3/getting-started";
 
 var shows = [];
 var currentShow = {};
@@ -27,7 +28,7 @@ function generateCastList(id) {
         var list = $("<ul>");
         response.cast.forEach(function (role) {
             var actorURL = wikipediaURL + role.name.trim().replace(" ", "_");
-            
+
             var actorAnchor = $("<a>")
                 .attr("href", actorURL)
                 .attr("target", "_blank")
@@ -35,13 +36,15 @@ function generateCastList(id) {
             var characterDiv = $("<li>").text(role.character + ": ");
             characterDiv.append(actorAnchor);
             list.append(characterDiv);
-        
+
         });
 
         $("#castList").append(list);
         $(".addCast").append($("#castLit"));
     });
 }
+
+
 
 function isAllEpisodesDownloaded(episodes) {
     var result = true;
@@ -69,12 +72,21 @@ function isEpisodeInWatchList(episode) {
 
 function addEpisodesToWatchList(episodes) {
     // watchList = watchList.concat(episodes);
-    episodes.forEach(function(episode) {
+    episodes.forEach(function (episode) {
         if (!isEpisodeInWatchList(episode)) {
             watchList.push(episode);
+            //addEpisodesToWatchList.text = "Episode added";
+
+            //document.getElementById("")
+
+
+            //$(this).attr("data-showName");
+            //$(this).attr("data-seasonNumber");
         }
-    });
+    }
+    )
 }
+
 function watchListComparator(episode1, episode2) {
     if (episode1.showName == episode2.showName) {
         return 0;
@@ -147,12 +159,24 @@ function addSeasonWidgets(show) {
     var cardDiv = $("<div>")
         .addClass(".card");
 
+
+        // we need to set each button to have a unique ID. Set counter to 0.
+         i = 0;
+
     show.seasons.forEach(function (season) {
+  
+        //increment counter for each iteration of the forEach results
+        i = i + 1;
+  
+
+        //give each button an ID in the format of 'Button-<number>';
+
         var addToWatchListButton = $("<button>")
             .text("Add to WatchList")
             .addClass("btn waves-effect black addToWatchList")
             .attr("data-showName", show.name)
-            .attr("data-seasonNumber", season.seasonNumber);
+            .attr("data-seasonNumber", season.seasonNumber)
+            .attr("id","Button-" + i);
         var cardActionDiv = $("<div>")
             .addClass("card-action")
             .append(addToWatchListButton);
@@ -167,7 +191,7 @@ function addSeasonWidgets(show) {
         var rowDiv = $("<div>")
             .addClass("card")
             .append(contentDiv, cardActionDiv)
-            cardDiv.append(rowDiv);
+        cardDiv.append(rowDiv);
     });
 
 
@@ -273,11 +297,34 @@ function searchShowBtnClicked(event) {
 
 }
 
-function cardActionButtonClicked(event) {
+function cardActionButtonClicked(event, obj) {
     console.log(this);
     var showName = $(this).attr("data-showName");
     var seasonNumber = $(this).attr("data-seasonNumber");
+  
+    //what is the ID of the button that was clicked?;
+    // = this.id;
+    // show ID in alert;
+    alert(this.id);
+
+    //update the text of the clicked button, identified by ID that fired the event;
+    document.getElementById(this.id).text= "Changed";
+    
+    //display the updated text.  WHY DOES THIS ONLY UPDATE IN MEMORY?
+    alert(document.getElementById(this.id).text)
+
+    // WHY IS THE TEXT OF THE CLICKED BUTTON NOT UPDATING ON THE SCREEN, BUT ONLY IN MEMORY;
+
+    //Hardcode the update to try to force the text to update manually - FAILS
+    //$("#Button-1").attr('value','Changed');
+    
+    //programatically update the text - FAILS
+    //$("#$(this.id)").attr('value','Changed');
+
     getEpisodes(showName, seasonNumber);
+
+
+
 }
 
 function newUserDataCallback(snapshot) {
@@ -296,4 +343,7 @@ $(function () {
     $("#searchShowBtn").on("click", searchShowBtnClicked);
     $(document).on("click", ".addToWatchList", cardActionButtonClicked);
     userDataRef.on("value", newUserDataCallback);
-});
+}
+);
+
+
