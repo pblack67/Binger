@@ -24,6 +24,7 @@ var settings = {
  
     console.log(response);
     for (var i = 0; i < response.results.length; i++){
+        if (response.results[i].original_language == "en"){
     console.log(response.results[i].original_name);
     console.log(response.results[i].popularity);
     console.log(response.results[i].first_air_date);
@@ -35,7 +36,7 @@ var settings = {
     // $(".todayShows").append(response.results[i].overview + "<br> <br>");
     var image = $("<img>")
         .addClass("image-sized")
-        .attr("src", "assets/images/testimage.jpg");
+        .attr("src", "https://image.tmdb.org/t/p/w154" + response.results[i].poster_path);
     var cardImageDiv = $("<div>")
         .addClass("card-image")
         .append(image);
@@ -61,7 +62,7 @@ var settings = {
      .append(cardImageDiv, cardStackedDiv) 
      $(".displayToday").append(horizontal);  
      
-    };
+    }};
     
     
     $(".displayToday").append($(".displayToday"));
