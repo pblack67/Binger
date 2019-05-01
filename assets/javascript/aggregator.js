@@ -8,8 +8,12 @@ var wikipediaURL = "https://en.wikipedia.org/wiki/";
 var movieDBAPI = "https://api.themoviedb.org/3/";
 var movieDBAPISuffix = "?api_key=29a27fe8b3f85bad1ab054a647529d57";
 var movieDBAPISourceSuffix = "&external_source=imdb_id";
+<<<<<<< HEAD
 var movieDBPictureAPI = "https://image.tmdb.org/t/p/w185";
 var trailerAPI = "https://developers.google.com/youtube/v3/getting-started";
+=======
+var movieDBPictureAPI = "https://image.tmdb.org/t/p/w300";
+>>>>>>> 6c131c76e2e7c2a0dbaa2b8db39ef725f3561383
 
 var shows = [];
 var currentShow = {};
@@ -40,7 +44,7 @@ function generateCastList(id) {
         });
 
         $("#castList").append(list);
-        $(".addCast").append($("#castLit"));
+        $(".addCast").append($("#castList"));
     });
 }
 
@@ -87,9 +91,24 @@ function addEpisodesToWatchList(episodes) {
     )
 }
 
+<<<<<<< HEAD
 function watchListComparator(episode1, episode2) {
     if (episode1.showName == episode2.showName) {
+=======
+function seasonComparator(episode1, episode2) {
+    if (episode1.seasonNumber == episode2.seasonNumber) {
+>>>>>>> 6c131c76e2e7c2a0dbaa2b8db39ef725f3561383
         return 0;
+    } else if (episode1.seasonNumber > episode2.seasonNumber) {
+        return 1;
+    } else {
+        return -1;
+    }
+}
+
+function showNameComparator(episode1, episode2) {
+    if (episode1.showName == episode2.showName) {
+        return seasonComparator(episode1, episode2);
     } else if (episode1.showName > episode2.showName) {
         return 1;
     } else {
@@ -132,7 +151,7 @@ function getEpisodes(showName, seasonNumber) {
                 console.log("Episode", episodes[response.episode_number - 1]);
                 if (isAllEpisodesDownloaded(episodes)) {
                     addEpisodesToWatchList(episodes);
-                    watchList.sort(watchListComparator);
+                    watchList.sort(showNameComparator);
                     saveWatchList(watchList);
                 }
             });
@@ -339,11 +358,20 @@ function newUserDataCallback(snapshot) {
 }
 
 $(function () {
+    initializeFirebase();
+    setUserName();
+    checkLoginStatus();
     $(".showSeasons").hide();
     $("#searchShowBtn").on("click", searchShowBtnClicked);
     $(document).on("click", ".addToWatchList", cardActionButtonClicked);
     userDataRef.on("value", newUserDataCallback);
+<<<<<<< HEAD
 }
 );
 
 
+=======
+    $("#logout").on("click", logoutButtonClicked);
+    $(".dropdown-trigger").dropdown();
+});
+>>>>>>> 6c131c76e2e7c2a0dbaa2b8db39ef725f3561383

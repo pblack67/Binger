@@ -19,6 +19,9 @@
 </head>
 
 <body class="grey lighten-5">
+    <ul id="dropdown1" class="dropdown-content">
+        <li><a id="logout" href="index.html">Logout</a></li>
+    </ul>
     <div class="navbar-fixed">
         <nav class="black" role="navigation">
             <div class="nav-wrapper container">
@@ -31,6 +34,9 @@
                     <li><a href="search.html">Search</a></li>
                     <li><a href="mylist.html">My List</a></li>
                     <li><a href="contact.html">Contact Us</a></li>
+                    <li><a id="logoutAnchor" class="dropdown-trigger" href="#!" data-target="dropdown1"><span
+                                id="userName"></span><i class="material-icons right">arrow_drop_down</i></a>
+                    </li>
                 </ul>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i
                         class="black material-icons">menu</i></a>
@@ -45,7 +51,7 @@
         </ul>
     </div>
     <section>
-            <div class="col s12 deep-purple darken-4 z-depth-3 herozone">
+        <div class="col s12 deep-purple darken-4 z-depth-3 herozone">
             <!-- <img id="imageSized" class="responsive-img" src="assets/images/tablet.jpg"> random image -->
             <div class="text-block"> 
                 <h4><i class="fas fa-mobile-alt"></i> &nbsp;<i class="far fa-check-circle"></i> &nbsp;<i class="fas fa-list-ul"></i></h4>
@@ -95,7 +101,8 @@
             <script type="text/javascript"
                 src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
             <script type="text/javascript" src="assets/javascript/materialize.js"></script>
-            <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase.js"></script>
+            <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-app.js"></script>
+            <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-database.js"></script>
             <script src="assets/javascript/firebase.js"></script>
             <script src="assets/javascript/aggregator.js"></script>
             <script>

@@ -18,7 +18,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 
-<body class="grey lighten-5">
+<body class="grey lighten-5" id="loginBackground">
+    <ul id="dropdown1" class="dropdown-content">
+        <li><a id="logout" href="#!">Logout</a></li>
+    </ul>
     <div class="navbar-fixed">
         <nav class="black" role="navigation">
             <div class="nav-wrapper container">
@@ -31,7 +34,13 @@
                     <li><a href="search.html">Search</a></li>
                     <li><a href="mylist.html">My List</a></li>
                     <li><a href="contact.html">Contact Us</a></li>
+<<<<<<< HEAD
                     <i class="fas fa-mobile-alt"></i>
+=======
+                    <li><a id="logoutAnchor" class="dropdown-trigger" href="#!" data-target="dropdown1"><span
+                                id="userName"></span><i class="material-icons right">arrow_drop_down</i></a>
+                    </li>
+>>>>>>> 6c131c76e2e7c2a0dbaa2b8db39ef725f3561383
                 </ul>
 
 
@@ -48,6 +57,7 @@
         </ul>
 
     </div>
+<<<<<<< HEAD
     <section>
         <div class="col s12 grey lighten-1 z-depth-3 herozone">
             <!-- <img id="imageSized" class="responsive-img" src="assets/images/tablet.jpg"> -->
@@ -56,10 +66,13 @@
         </div>
 
     </section>
+=======
+
+>>>>>>> 6c131c76e2e7c2a0dbaa2b8db39ef725f3561383
     <br><br><br>
 
-
     <div class="container">
+<<<<<<< HEAD
 
         <div class="row">
             <div class="col s5"><img class="responsive-img" src="assets/images/Doctor_Who_Series_11.png"></div>
@@ -85,31 +98,49 @@
                         <span class="card-title">Doctor Who Series 11 Episode 6<i
                                 class="material-icons right">more_vert</i></span>
                         <p><a href="#">A link to Wiki or some other place</a></p>
+=======
+        <div class="row valign-wrapper">
+
+            <div class="row">
+                <form id="loginForm" class="col s12" style="display: none;">
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input id="first_name" type="text" class="validate">
+                            <label for="first_name">First Name</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input id="last_name" type="text" class="validate">
+                            <label for="last_name">Last Name</label>
+                        </div>
+>>>>>>> 6c131c76e2e7c2a0dbaa2b8db39ef725f3561383
                     </div>
-                    <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4"><i
-                                class="material-icons right">close</i></span>
-                        <p>Yasmin travels in time to visit her grandmother during her youth in the partition of India,
-                            but everyone gets caught up in the tragic bloodshed of that era.</p>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="email" type="email" class="validate">
+                            <label for="email">Email</label>
+                        </div>
                     </div>
+                    <h5 id="errorMessage" style="display: none;">Please enter your name and email</h5>
+                    <button type="submit" id="loginButton" class="btn waves-effect black">Login</button>
+                </form>
+                <div id="welcomeBack" class="center-align" style="display: none;">
+                    <h1>Welcome, <span id="welcomeUserName"></span></h1>
                 </div>
+            </div>
 
-
-
+            <div class="footer">&copy; 2019 TheBinger &nbsp;
+                <i class="fa fa-github" aria-hidden="true"></i>
+                <i class="fa fa-gitlab" aria-hidden="true"></i>
+                <i class="fa fa-slack" aria-hidden="true"></i>
             </div>
         </div>
-        <div class="footer">&copy; 2019 TheBinger &nbsp;
-            <i class="fa fa-github" aria-hidden="true"></i>
-            <i class="fa fa-gitlab" aria-hidden="true"></i>
-            <i class="fa fa-slack" aria-hidden="true"></i>
-        </div>
     </div>
-
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="assets/javascript/materialize.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-database.js"></script>
     <script src="assets/javascript/firebase.js"></script>
-    <script src="assets/javascript/aggregator.js"></script>
+    <script src="assets/javascript/login.js"></script>
     <script>
         $(document).ready(function () {
             $('.sidenav').sidenav({ closeOnClick: true });

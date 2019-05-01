@@ -72,8 +72,9 @@ body {
 .herozone {
   background-image: url('../images/secondimageattempt.jpg');
   height: 250px;
-  max-width: 100%;
+  /* max-width: 100%; */
   background-size: cover;
+<<<<<<< HEAD
   opacity: 0.5;
   position: relative;
 }
@@ -89,3 +90,59 @@ body {
   padding-left: 20px;
   padding-right: 20px;
 }
+=======
+
+}
+
+#loginBackground {
+  background-image: url('../images/secondimageattempt.jpg');
+  /* height: 250px;
+  max-width: 100%; */
+  background-size: cover;
+}
+
+#welcomeBack {
+  color: black;
+  background-color: whitesmoke;
+  padding: 0 1em;
+  border: 1px solid black;
+  border-radius: 25px;
+}
+
+#loginForm {
+  /* color: whitesmoke;
+  background-color: black; */
+  background-color: whitesmoke;
+  padding: 1em;
+  border: 1px solid black;
+  border-radius: 25px;
+}
+
+#logoutButton {
+  margin: 0 0 1em 0;
+}
+
+#errorMessage {
+  color: red;
+}
+
+.displayToday {
+  font-size: 13px;
+}
+
+.card-action {
+  font-size: 16px;
+
+}
+
+.divBlocks {
+  max-width: 500px;
+
+}
+
+  
+.dropdown-content li>a {
+  color: black;
+}
+
+>>>>>>> 6c131c76e2e7c2a0dbaa2b8db39ef725f3561383
