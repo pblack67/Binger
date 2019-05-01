@@ -8,7 +8,7 @@ var wikipediaURL = "https://en.wikipedia.org/wiki/";
 var movieDBAPI = "https://api.themoviedb.org/3/";
 var movieDBAPISuffix = "?api_key=29a27fe8b3f85bad1ab054a647529d57";
 var movieDBAPISourceSuffix = "&external_source=imdb_id";
-var movieDBPictureAPI = "https://image.tmdb.org/t/p/w185";
+var movieDBPictureAPI = "https://image.tmdb.org/t/p/w300";
 var trailerAPI = "https://developers.google.com/youtube/v3/getting-started";
 
 var shows = [];
