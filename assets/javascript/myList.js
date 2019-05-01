@@ -111,7 +111,7 @@ function findEpisode(showName, seasonNumber, episodeNumber) {
         if (myEpisode.showName === showName) {
             if (myEpisode.seasonNumber == seasonNumber) {
                 if (myEpisode.episodeNumber == episodeNumber) {
-                    return myEpisode;
+                    return i;
                 }
             }
         }
@@ -125,10 +125,9 @@ function setWatchedButtonClicked(event) {
     var showName = $(this).attr("data-showName");
     var seasonNumber = $(this).attr("data-seasonNumber");
     var episodeNumber = $(this).attr("data-episodeNumber");
-    var episode = findEpisode(showName, seasonNumber, episodeNumber);
-    if (episode !== null) {
-        console.log("Episode found");
-        episode.watched = true;
+    var index = findEpisode(showName, seasonNumber, episodeNumber);
+    if (index !== null) {
+        watchList.splice(index, 1);
         saveWatchList(watchList);
     }
 }
