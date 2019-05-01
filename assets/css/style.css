@@ -113,6 +113,17 @@ body {
   font-size: 13px;
 }
 
+.card-action {
+  font-size: 16px;
+
+}
+
+.divBlocks {
+  max-width: 500px;
+
+}
+
+  
 .dropdown-content li>a {
   color: black;
 }
