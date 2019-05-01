@@ -4,6 +4,8 @@
 <head>
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="assets/css/materialize.css" media="screen,projection" />
     <link type="text/css" rel="stylesheet" href="assets/css/materialize.min.css" media="screen,projection" />
@@ -17,6 +19,9 @@
 </head>
 
 <body class="grey lighten-5" id="loginBackground">
+    <ul id="dropdown1" class="dropdown-content">
+        <li><a id="logout" href="#!">Logout</a></li>
+    </ul>
     <div class="navbar-fixed">
         <nav class="black" role="navigation">
             <div class="nav-wrapper container">
@@ -24,11 +29,14 @@
                         class="large material-icons">computer</i></a>
                 <ul class="right hide-on-med-and-down">
                     <li><a href="index.html">Home</a></li>
+
                     <li><a href="discover.html">Discover</a></li>
                     <li><a href="search.html">Search</a></li>
                     <li><a href="mylist.html">My List</a></li>
                     <li><a href="contact.html">Contact Us</a></li>
-                    <li><em><span id="userName"></span></em></li>
+                    <li><a id="logoutAnchor" class="dropdown-trigger" href="#!" data-target="dropdown1"><span
+                                id="userName"></span><i class="material-icons right">arrow_drop_down</i></a>
+                    </li>
                 </ul>
 
 
@@ -45,7 +53,6 @@
         </ul>
 
     </div>
-
     <br><br><br>
 
     <div class="container">
@@ -74,8 +81,6 @@
                 </form>
                 <div id="welcomeBack" class="center-align" style="display: none;">
                     <h1>Welcome, <span id="welcomeUserName"></span></h1>
-                    <br>
-                    <button id="logoutButton" class="btn waves-effect black">Logout</button>
                 </div>
             </div>
 

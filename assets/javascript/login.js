@@ -15,34 +15,16 @@ function loginButtonClicked(event) {
         $("#email").val("");
         $("#first_name").val("");
         $("#last_name").val("");
+        window.location.href = "discover.html";
     } else {
         $("#errorMessage").show();
     }
 }
 
-function initializeNames() {
-    setUserName();
-
-    var email = localStorage.getItem("loginEmail");
-    if ((email == null) || (email == undefined)) {
-        $("#loginForm").show();
-        $("#welcomeBack").hide();
-    } else {
-        $("#loginForm").hide();
-        $("#welcomeBack").show();
-        var userName = localStorage.getItem("userName");
-        $("#welcomeUserName").text(userName + "!");
-    }
-}
-
-function logoutButtonClicked() {
-    localStorage.removeItem("loginEmail");
-    localStorage.removeItem("userName");
-    initializeNames();
-}
-
 $(function () {
     $("#loginButton").on("click", loginButtonClicked);
-    $("#logoutButton").on("click", logoutButtonClicked);
     initializeNames();
+    $("#logout").on("click", logoutButtonClicked);
+    setUserName();
+    $(".dropdown-trigger").dropdown();
 })

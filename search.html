@@ -4,6 +4,8 @@
 <head>
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="assets/css/materialize.css" media="screen,projection" />
     <link type="text/css" rel="stylesheet" href="assets/css/materialize.min.css" media="screen,projection" />
@@ -17,6 +19,9 @@
 </head>
 
 <body class="grey lighten-5">
+    <ul id="dropdown1" class="dropdown-content">
+        <li><a id="logout" href="index.html">Logout</a></li>
+    </ul>
     <div class="navbar-fixed">
         <nav class="black" role="navigation">
             <div class="nav-wrapper container">
@@ -29,7 +34,9 @@
                     <li><a href="search.html">Search</a></li>
                     <li><a href="mylist.html">My List</a></li>
                     <li><a href="contact.html">Contact Us</a></li>
-                    <li><em><span id="userName"></span></em></li>
+                    <li><a id="logoutAnchor" class="dropdown-trigger" href="#!" data-target="dropdown1"><span
+                                id="userName"></span><i class="material-icons right">arrow_drop_down</i></a>
+                    </li>
                 </ul>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i
                         class="black material-icons">menu</i></a>
@@ -46,7 +53,10 @@
     <section>
         <div class="col s12 deep-purple darken-4 z-depth-3 herozone">
             <!-- <img id="imageSized" class="responsive-img" src="assets/images/tablet.jpg"> random image -->
-
+            <div class="text-block"> 
+                <h4><i class="fas fa-mobile-alt"></i> &nbsp;<i class="far fa-check-circle"></i> &nbsp;<i class="fas fa-list-ul"></i></h4>
+                <p>Browse a show | Save an episode | Check your Watchlist</p>
+              </div>
         </div>
     </section>
     <br><br><br>
@@ -98,7 +108,10 @@
             <script>
                 $(document).ready(function () {
                     $('.sidenav').sidenav({ closeOnClick: true });
+
+                
                 });
+                
             </script>
 </body>
 
