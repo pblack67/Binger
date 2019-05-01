@@ -17,6 +17,9 @@
 </head>
 
 <body class="grey lighten-5">
+    <ul id="dropdown1" class="dropdown-content">
+        <li><a id="logout" href="index.html">Logout</a></li>
+    </ul>
     <div class="navbar-fixed">
         <nav class="black" role="navigation">
             <div class="nav-wrapper container">
@@ -28,7 +31,9 @@
                     <li><a href="search.html">Search</a></li>
                     <li><a href="mylist.html">My List</a></li>
                     <li><a href="contact.html">Contact Us</a></li>
-                    <li><em><span id="userName"></span></em></li>
+                    <li><a id="logoutAnchor" class="dropdown-trigger" href="#!" data-target="dropdown1"><span
+                                id="userName"></span><i class="material-icons right">arrow_drop_down</i></a>
+                    </li>
                 </ul>
 
 
@@ -50,7 +55,7 @@
             <!-- <img id="imageSized" class="responsive-img" src="assets/images/tablet.jpg"> -->
 
         </div>
-        
+
     </section>
     <br><br><br>
 
@@ -61,18 +66,18 @@
             <h3>What's on TV Tonight (Will update with the date listed here)</h3>
           
             <div class="col s12 displayToday">
-                    
 
-            </div>             
-       
+
+            </div>
+
         </div>
 
     </div>
     <div class="footer">&copy; 2019 TheBinger &nbsp;
-            <i class="fa fa-github" aria-hidden="true"></i>
-            <i class="fa fa-gitlab" aria-hidden="true"></i>
-            <i class="fa fa-slack" aria-hidden="true"></i>
-        </div>
+        <i class="fa fa-github" aria-hidden="true"></i>
+        <i class="fa fa-gitlab" aria-hidden="true"></i>
+        <i class="fa fa-slack" aria-hidden="true"></i>
+    </div>
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="assets/javascript/materialize.js"></script>
@@ -88,4 +93,3 @@
 </body>
 
 </html>
-

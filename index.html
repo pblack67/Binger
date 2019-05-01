@@ -17,6 +17,9 @@
 </head>
 
 <body class="grey lighten-5" id="loginBackground">
+    <ul id="dropdown1" class="dropdown-content">
+        <li><a id="logout" href="#!">Logout</a></li>
+    </ul>
     <div class="navbar-fixed">
         <nav class="black" role="navigation">
             <div class="nav-wrapper container">
@@ -28,7 +31,9 @@
                     <li><a href="search.html">Search</a></li>
                     <li><a href="mylist.html">My List</a></li>
                     <li><a href="contact.html">Contact Us</a></li>
-                    <li><em><span id="userName"></span></em></li>
+                    <li><a id="logoutAnchor" class="dropdown-trigger" href="#!" data-target="dropdown1"><span
+                                id="userName"></span><i class="material-icons right">arrow_drop_down</i></a>
+                    </li>
                 </ul>
 
 
@@ -74,8 +79,6 @@
                 </form>
                 <div id="welcomeBack" class="center-align" style="display: none;">
                     <h1>Welcome, <span id="welcomeUserName"></span></h1>
-                    <br>
-                    <button id="logoutButton" class="btn waves-effect black">Logout</button>
                 </div>
             </div>
 

@@ -51,7 +51,8 @@ function createSeasonList(watchList) {
                     .addClass("collapsible-body");
                 var listItem = $("<li>")
                     .append(header)
-                    .append(currentBody);
+                    .append(currentBody)
+                    .attr("id", "season" + episode.seasonNumber);
                 $("#seasonCollapse").append(listItem);
             }
 
@@ -81,15 +82,25 @@ function newUserDataCallback(snapshot) {
     $("#episodeList").empty();
     if (response !== null) {
         if (response.watchList !== undefined) {
+            var showSelectorValue = $("#showSelector").val();
+            var openSelectorID = $(".active").attr("id");
+
             $("#episodeList").empty();
             watchList = response.watchList;
             initializeShowSelector();
-            $('select').formSelect();
             filteredWatchList = filterWatchList(watchList, $("#showSelector").val());
             createSeasonList(filteredWatchList);
             if (filteredWatchList.length > 0) {
                 $("#episodeImage").attr("src", filteredWatchList[0].poster);
             }
+            if (showSelectorValue !== null) {
+                $("#showSelector").val(showSelectorValue).change();
+            }
+            if (openSelectorID !== null) {
+                $("#" + openSelectorID).addClass("active");
+                $('.collapsible').collapsible();
+            }
+            $('select').formSelect();
         }
     }
 }
@@ -110,6 +121,7 @@ function findEpisode(showName, seasonNumber, episodeNumber) {
 }
 
 function setWatchedButtonClicked(event) {
+    event.preventDefault();
     var showName = $(this).attr("data-showName");
     var seasonNumber = $(this).attr("data-seasonNumber");
     var episodeNumber = $(this).attr("data-episodeNumber");
@@ -143,7 +155,11 @@ function showSelectorChanged(event) {
 
 $(function () {
     initializeFirebase();
+
+    $("#logout").on("click", logoutButtonClicked);
     setUserName();
+    checkLoginStatus();
+    $(".dropdown-trigger").dropdown();
 
     $(document).on("click", ".setWatchedButton", setWatchedButtonClicked);
     $(document).on("change", "#showSelector", showSelectorChanged)
