@@ -74,10 +74,10 @@ body {
   height: 250px;
   /* max-width: 100%; */
   background-size: cover;
-<<<<<<< HEAD
   opacity: 0.5;
   position: relative;
 }
+
 .text-block {
   position: absolute;
   bottom: 20px;
@@ -90,14 +90,9 @@ body {
   padding-left: 20px;
   padding-right: 20px;
 }
-=======
-
-}
 
 #loginBackground {
   background-image: url('../images/secondimageattempt.jpg');
-  /* height: 250px;
-  max-width: 100%; */
   background-size: cover;
 }
 
@@ -110,8 +105,6 @@ body {
 }
 
 #loginForm {
-  /* color: whitesmoke;
-  background-color: black; */
   background-color: whitesmoke;
   padding: 1em;
   border: 1px solid black;
@@ -145,4 +138,3 @@ body {
   color: black;
 }
 
->>>>>>> 6c131c76e2e7c2a0dbaa2b8db39ef725f3561383

@@ -8,12 +8,8 @@ var wikipediaURL = "https://en.wikipedia.org/wiki/";
 var movieDBAPI = "https://api.themoviedb.org/3/";
 var movieDBAPISuffix = "?api_key=29a27fe8b3f85bad1ab054a647529d57";
 var movieDBAPISourceSuffix = "&external_source=imdb_id";
-<<<<<<< HEAD
 var movieDBPictureAPI = "https://image.tmdb.org/t/p/w185";
 var trailerAPI = "https://developers.google.com/youtube/v3/getting-started";
-=======
-var movieDBPictureAPI = "https://image.tmdb.org/t/p/w300";
->>>>>>> 6c131c76e2e7c2a0dbaa2b8db39ef725f3561383
 
 var shows = [];
 var currentShow = {};
@@ -91,13 +87,8 @@ function addEpisodesToWatchList(episodes) {
     )
 }
 
-<<<<<<< HEAD
-function watchListComparator(episode1, episode2) {
-    if (episode1.showName == episode2.showName) {
-=======
 function seasonComparator(episode1, episode2) {
     if (episode1.seasonNumber == episode2.seasonNumber) {
->>>>>>> 6c131c76e2e7c2a0dbaa2b8db39ef725f3561383
         return 0;
     } else if (episode1.seasonNumber > episode2.seasonNumber) {
         return 1;
@@ -179,14 +170,14 @@ function addSeasonWidgets(show) {
         .addClass(".card");
 
 
-        // we need to set each button to have a unique ID. Set counter to 0.
-         i = 0;
+    // we need to set each button to have a unique ID. Set counter to 0.
+    i = 0;
 
     show.seasons.forEach(function (season) {
-  
+
         //increment counter for each iteration of the forEach results
         i = i + 1;
-  
+
 
         //give each button an ID in the format of 'Button-<number>';
 
@@ -195,7 +186,7 @@ function addSeasonWidgets(show) {
             .addClass("btn waves-effect black addToWatchList")
             .attr("data-showName", show.name)
             .attr("data-seasonNumber", season.seasonNumber)
-            .attr("id","Button-" + i);
+            .attr("id", "Button-" + i);
         var cardActionDiv = $("<div>")
             .addClass("card-action")
             .append(addToWatchListButton);
@@ -320,15 +311,15 @@ function cardActionButtonClicked(event, obj) {
     console.log(this);
     var showName = $(this).attr("data-showName");
     var seasonNumber = $(this).attr("data-seasonNumber");
-  
+
     //what is the ID of the button that was clicked?;
     // = this.id;
     // show ID in alert;
     alert(this.id);
 
     //update the text of the clicked button, identified by ID that fired the event;
-    document.getElementById(this.id).text= "Changed";
-    
+    document.getElementById(this.id).text = "Changed";
+
     //display the updated text.  WHY DOES THIS ONLY UPDATE IN MEMORY?
     alert(document.getElementById(this.id).text)
 
@@ -336,7 +327,7 @@ function cardActionButtonClicked(event, obj) {
 
     //Hardcode the update to try to force the text to update manually - FAILS
     //$("#Button-1").attr('value','Changed');
-    
+
     //programatically update the text - FAILS
     //$("#$(this.id)").attr('value','Changed');
 
@@ -365,13 +356,6 @@ $(function () {
     $("#searchShowBtn").on("click", searchShowBtnClicked);
     $(document).on("click", ".addToWatchList", cardActionButtonClicked);
     userDataRef.on("value", newUserDataCallback);
-<<<<<<< HEAD
-}
-);
-
-
-=======
     $("#logout").on("click", logoutButtonClicked);
     $(".dropdown-trigger").dropdown();
 });
->>>>>>> 6c131c76e2e7c2a0dbaa2b8db39ef725f3561383
