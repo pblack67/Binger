@@ -19,9 +19,6 @@
 </head>
 
 <body class="grey lighten-5">
-    <ul id="dropdown1" class="dropdown-content">
-        <li><a id="logout" href="index.html">Logout</a></li>
-    </ul>
     <div class="navbar-fixed">
         <nav class="black" role="navigation">
             <div class="nav-wrapper container">
@@ -34,9 +31,6 @@
                     <li><a href="search.html">Search</a></li>
                     <li><a href="mylist.html">My List</a></li>
                     <li><a href="contact.html">Contact Us</a></li>
-                    <li><a id="logoutAnchor" class="dropdown-trigger" href="#!" data-target="dropdown1"><span
-                                id="userName"></span><i class="material-icons right">arrow_drop_down</i></a>
-                    </li>
                 </ul>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i
                         class="black material-icons">menu</i></a>
@@ -51,12 +45,13 @@
         </ul>
     </div>
     <section>
-        <div class="col s12 deep-purple darken-4 z-depth-3 herozone">
-            <!-- <img id="imageSized" class="responsive-img" src="assets/images/tablet.jpg"> random image -->
-            <div class="text-block"> 
-                <h4><i class="fas fa-mobile-alt"></i> &nbsp;<i class="far fa-check-circle"></i> &nbsp;<i class="fas fa-list-ul"></i></h4>
-                <p>Browse a show | Save an episode | Check your Watchlist</p>
-              </div>
+        <!----<div class="col s12 deep-purple darken-4 z-depth-3 herozone">--->
+        <!-- <img id="imageSized" class="responsive-img" src="assets/images/tablet.jpg"> random image -->
+        <div class="text-block">
+            <!-----  <h4><i class="fas fa-mobile-alt"></i> &nbsp;<i class="far fa-check-circle"></i> &nbsp;<i class="fas fa-list-ul"></i></h4>--->
+            <p>Browse show &nbsp;<i class="fas fa-angle-double-right"></i> &nbsp; Save season &nbsp;<i
+                    class="fas fa-angle-double-right"></i>&nbsp; Binge</p>
+        </div>
         </div>
     </section>
     <br><br><br>
@@ -64,55 +59,66 @@
     <div class="container">
 
 
-        <div class="row">
+        <!----  <div class="row">
             <form class="col s12">
                 <div class="input-field">
                     <input id="searchedShow" type="search" required>
-                    <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                   <label class="label-icon" for="search"><i class="material-icons">search</i></label>
                     <i class="material-icons">close</i>
                     <button class="btn waves-effect black" type="submit" id="searchShowBtn">Search</button>
 
                 </div>
 
-            </form>
-
-        </div>
+            </form>--->
         <div class="row">
-            <div class="col s5 addCast">
-                <img id="poster" src="">
-                <div id="castList">
+            <nav>
+               <div class="nav-wrapper">
+                    <form>
+                        <div class="input-field #fafafa grey lighten-5">
+                            <input id="searchedShow" type="search" required>
+                            <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                            <i class="material-icons">close</i>
+                            <button class="btn waves-effect black" type="submit" id="searchShowBtn">Search</button>
+                        </div>
+                    </form>
+                </div>
+            </nav>
+        </div>
+    
+    <div class="row">
+        <div class="col s5 addCast">
+            <img id="poster" src="">
+            <div id="castList">
+            </div>
+        </div>
+
+        <div class="col s7 addSeason">
+            <div class="showSeasons">
+                <div class="card">
+                    <!-- Seasons here! -->
+                </div>
+                <div class="footer">&copy; 2019 TheBinger &nbsp;
+                    <i class="fa fa-github" aria-hidden="true"></i>
+                    <i class="fa fa-gitlab" aria-hidden="true"></i>
+                    <i class="fa fa-slack" aria-hidden="true"></i>
                 </div>
             </div>
+        </div>
 
-            <div class="col s7 addSeason">
-                <div class="showSeasons">
-                    <div class="card">
-                        <!-- Seasons here! -->
-                    </div>
-                    <div class="footer">&copy; 2019 TheBinger &nbsp;
-                        <i class="fa fa-github" aria-hidden="true"></i>
-                        <i class="fa fa-gitlab" aria-hidden="true"></i>
-                        <i class="fa fa-slack" aria-hidden="true"></i>
-                    </div>
-                </div>
-            </div>
+        <!--JavaScript at end of body for optimized loading-->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script type="text/javascript" src="assets/javascript/materialize.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase.js"></script>
+        <script src="assets/javascript/firebase.js"></script>
+        <script src="assets/javascript/aggregator.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('.sidenav').sidenav({ closeOnClick: true });
 
-            <!--JavaScript at end of body for optimized loading-->
-            <script type="text/javascript"
-                src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-            <script type="text/javascript" src="assets/javascript/materialize.js"></script>
-            <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-app.js"></script>
-            <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-database.js"></script>
-            <script src="assets/javascript/firebase.js"></script>
-            <script src="assets/javascript/aggregator.js"></script>
-            <script>
-                $(document).ready(function () {
-                    $('.sidenav').sidenav({ closeOnClick: true });
 
-                
-                });
-                
-            </script>
+            });
+
+        </script>
 </body>
 
 </html>
