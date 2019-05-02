@@ -58,7 +58,7 @@ function isAllEpisodesDownloaded(episodes) {
 
 function isEpisodeInWatchList(episode) {
     for (var i = 0; i < watchList.length; i++) {
-        listItem = watchList[i];
+        var listItem = watchList[i];
         if (listItem.showName === episode.showName) {
             if (listItem.seasonNumber === episode.seasonNumber) {
                 if (listItem.episodeNumber === episode.episodeNumber) {
@@ -70,11 +70,11 @@ function isEpisodeInWatchList(episode) {
     return false;
 }
 
-function isSeasonInWatchList(season) {
+function isSeasonInWatchList(showName, seasonNumber) {
     for (var i = 0; i < watchList.length; i++) {
-        listItem = watchList[i];
-        if (listItem.showName === season.showName) {
-            if (listItem.seasonNumber === season.seasonNumber) {
+        var listItem = watchList[i];
+        if (listItem.showName === showName) {
+            if (listItem.seasonNumber == seasonNumber) {
                 return true;
             }
         }
@@ -199,6 +199,9 @@ function addSeasonWidgets(show) {
             .attr("data-showName", show.name)
             .attr("data-seasonNumber", season.seasonNumber)
             .attr("id", "Button-" + i);
+        if (isSeasonInWatchList(show.name, season.seasonNumber)) {
+            addToWatchListButton.text("Season Added");
+        }
         var cardActionDiv = $("<div>")
             .addClass("card-action")
             .append(addToWatchListButton);
