@@ -70,6 +70,18 @@ function isEpisodeInWatchList(episode) {
     return false;
 }
 
+function isSeasonInWatchList(season) {
+    for (var i = 0; i < watchList.length; i++) {
+        listItem = watchList[i];
+        if (listItem.showName === season.showName) {
+            if (listItem.seasonNumber === season.seasonNumber) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
 function addEpisodesToWatchList(episodes) {
     // watchList = watchList.concat(episodes);
     episodes.forEach(function (episode) {
