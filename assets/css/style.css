@@ -67,17 +67,18 @@ body {
 .addCast {
   font-family: 'Open Sans Condensed', sans-serif;
   font-family: 'Rajdhani', sans-serif;
-  margin-top: 80px;
+  /*this margin below was messing up the alignment of the page*/
+  /* margin-top: 80px; */ 
 }
 
-.text-block {
+ .text-block {
   position: absolute;
   margin-left: 35%; 
   padding-bottom: 20px;
   font-size: 20px;
   padding-top: 10px;
   text-align: center;
-}
+} 
 
 #loginBackground {
   background-image: url('../images/secondimageattempt.jpg');
@@ -154,4 +155,8 @@ body {
 
 #todayShow-14 {
   clear: both;
+}
+
+#seasonDivLoc{
+  margin-top: 80px;
 }
