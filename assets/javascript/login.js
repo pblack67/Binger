@@ -5,7 +5,7 @@ function loginButtonClicked(event) {
     var lastName = $("#last_name").val().trim();
 
     if ((email !== "") && (firstName !== "") && (lastName !== "")) {
-        email = email.replace(".", "_");
+        email = email.replace(/\./g, "_");
         var userName = firstName + " " + lastName;
         localStorage.setItem("userName", userName);
         localStorage.setItem("loginEmail", email);
