@@ -321,6 +321,7 @@ function newUserDataCallback(snapshot) {
 }
 
 $(function () {
+    initializeFirebase();
     $(".showSeasons").hide();
     $("#searchShowBtn").on("click", searchShowBtnClicked);
     $(document).on("click", ".addToWatchList", cardActionButtonClicked);
