@@ -2,6 +2,10 @@
 <html>
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My Binge List</title>
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
@@ -10,11 +14,6 @@
     <link href="assets/css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
-
-
-
-    <!--Let browser know website is optimized for mobile-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 
 <body class="grey lighten-5">
@@ -33,7 +32,7 @@
                     <li><a href="mylist.html">My List</a></li>
                     <li><a href="contact.html">Contact Us</a></li>
                     <li><a id="logoutAnchor" class="dropdown-trigger" href="#!" data-target="dropdown1"><span
-                        id="userName"></span><i class="material-icons right">arrow_drop_down</i></a>
+                                id="userName"></span><i class="material-icons right">arrow_drop_down</i></a>
                 </ul>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i
                         class="black material-icons">menu</i></a>
@@ -48,7 +47,7 @@
     </div>
 
     <br>
-    
+
     <div class="container">
         <div class="row">
             <div class="input-field col s12">
@@ -57,7 +56,9 @@
                 <label>Your Shows</label>
             </div>
         </div>
+
         <br>
+
         <div class="row">
             <div class="col s4"><img id="episodeImage" class="responsive-img" src=""></div>
             <div class="col s8">
@@ -65,6 +66,7 @@
                 </ul>
             </div>
         </div>
+
         <div class="footer">&copy; 2019 TheBinger &nbsp;
             <i class="fa fa-github" aria-hidden="true"></i>
             <i class="fa fa-gitlab" aria-hidden="true"></i>
@@ -73,20 +75,12 @@
     </div>
 
     <!--JavaScript at end of body for optimized loading-->
-
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="assets/javascript/materialize.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-database.js"></script>
-    <script src="assets/javascript/firebase.js"></script>
+    <script src="assets/javascript/common.js"></script>
     <script src="assets/javascript/myList.js"></script>
-    <script>
-        $(document).ready(function () {
-            $('.sidenav').sidenav({ closeOnClick: true });
-        });
-
-        $('.dropdown-trigger').dropdown();
-    </script>
 </body>
 
 </html>

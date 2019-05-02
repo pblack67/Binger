@@ -1,6 +1,4 @@
 $(function () {
-    $("#logout").on("click", logoutButtonClicked);
-    setUserName();
-    checkLoginStatus();
-    $(".dropdown-trigger").dropdown();
+    initializePage(true);
+    $("#contactSubject").focus();
 });

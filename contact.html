@@ -2,6 +2,10 @@
 <html>
 
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Contact Us</title>
   <!--Import Google Icon Font-->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!--Import materialize.css-->
@@ -10,9 +14,6 @@
   <link href="assets/css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
   <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
-
-  <!--Let browser know website is optimized for mobile-->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 
 <body class="grey lighten-5">
@@ -20,7 +21,6 @@
     <li><a id="logout" href="#!">Logout</a></li>
   </ul>
   <div class="navbar-fixed">
-
     <nav class="black" role="navigation">
       <div class="nav-wrapper container">
         <a id="logo-container" href="#" class="brand-logo">The Binger<i class="large material-icons">computer</i></a>
@@ -31,10 +31,8 @@
           <li><a href="mylist.html">My List</a></li>
           <li><a href="contact.html">Contact Us</a></li>
           <li><a id="logoutAnchor" class="dropdown-trigger" href="#!" data-target="dropdown1"><span
-            id="userName"></span><i class="material-icons right">arrow_drop_down</i></a>
+                id="userName"></span><i class="material-icons right">arrow_drop_down</i></a>
         </ul>
-
-
         <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="black material-icons">menu</i></a>
       </div>
     </nav>
@@ -49,24 +47,11 @@
   <br><br><br>
 
   <div class="container">
-
-
     <div class="row">
       <form action="mailto:pblack67@comcast.net" method="GET" class="col s12">
-        <!-- <div class="row">
-          <div class="input-field col s6">
-            <input id="first_name" type="text" class="validate">
-            <label for="first_name">First Name</label>
-          </div>
-          <div class="input-field col s6">
-            <input id="last_name" type="text" class="validate">
-            <label for="last_name">Last Name</label>
-          </div>
-        </div> -->
-
         <div class="row">
           <div class="input-field col s12">
-            <input name="subject" type="text">
+            <input id="contactSubject" name="subject" type="text">
             <label for="subject">Subject</label>
           </div>
         </div>
@@ -80,7 +65,6 @@
         <center><button class="btn waves-effect black" type="submit" name="action">Submit
             <i class="material-icons right">send</i>
           </button> </center>
-
       </form>
     </div>
 
@@ -89,7 +73,6 @@
       <i class="fa fa-gitlab" aria-hidden="true"></i>
       <i class="fa fa-slack" aria-hidden="true"></i>
     </div>
-
   </div>
 
   <!--JavaScript at end of body for optimized loading-->
@@ -97,14 +80,9 @@
   <script type="text/javascript" src="assets/javascript/materialize.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-database.js"></script>
-  <script src="assets/javascript/aggregator.js"></script>
-  <script src="assets/javascript/firebase.js"></script>
+  <script src="assets/javascript/common.js"></script>
+  <script src="assets/javascript/search.js"></script>
   <script src="assets/javascript/contact.js"></script>
-  <script>
-    $(document).ready(function () {
-      $('.sidenav').sidenav({ closeOnClick: true });
-    });
-  </script>
 </body>
 
 </html>

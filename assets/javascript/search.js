@@ -1,5 +1,4 @@
-
-// Espisodate show search API endpoint
+// API URLs
 var showSearchURL = "https://www.episodate.com/api/search?q=" // yourshowhere&page=1"
 var showSearchSuffix = "&page=1";
 var showSearchDetailsURL = "https://www.episodate.com/api/show-details?q="
@@ -14,10 +13,7 @@ var shows = [];
 var currentShow = {};
 var watchList = [];
 
-//need to update with materialize classes
 //function gets CastList and displays on either Search or Episode Page
-//Data should appear on the left side of main content, next to search results
-//or next to the episodes list. 
 function generateCastList(id) {
     var myURL = movieDBAPI + "tv/" + id + "/credits" + movieDBAPISuffix;
     console.log(myURL);
@@ -80,15 +76,11 @@ function isSeasonInWatchList(showName, seasonNumber) {
 }
 
 function addEpisodesToWatchList(episodes) {
-    // watchList = watchList.concat(episodes);
     episodes.forEach(function (episode) {
         if (!isEpisodeInWatchList(episode)) {
             watchList.push(episode);
-
-
         }
-    }
-    )
+    });
 }
 
 function watchListComparator(episode1, episode2) {
@@ -118,6 +110,7 @@ function getEpisodes(showName, seasonNumber) {
                 + (i + 1)
                 + movieDBAPISuffix;
             console.log(myURL);
+
             $.get(myURL).then(function (response) {
                 console.log(response);
                 var myEpisode = {
@@ -156,27 +149,16 @@ function findShow(showName) {
     return myShow;
 }
 
-//add seasons on search page using forEach
-//MATERIALIZE USED. Please follow class naming and setup for materialize
-//will be moving div to the right to display character content on the left
 function addSeasonWidgets(show) {
     var cardDiv = $("<div>")
         .addClass(".card");
 
-
-        // we need to set each button to  
-         i = 0;
-
     show.seasons.forEach(function (season) {
-  
-    
-  
         var addToWatchListButton = $("<button>")
             .text("Add to WatchList")
             .addClass("btn waves-effect black addToWatchList")
             .attr("data-showName", show.name)
-            .attr("data-seasonNumber", season.seasonNumber)
-            .attr("id", "Button-" + i);
+            .attr("data-seasonNumber", season.seasonNumber);
         if (isSeasonInWatchList(show.name, season.seasonNumber)) {
             addToWatchListButton.text("Season Added");
         }
@@ -196,7 +178,6 @@ function addSeasonWidgets(show) {
             .append(contentDiv, cardActionDiv)
         cardDiv.append(rowDiv);
     });
-
 
     $(".showSeasons").append(cardDiv);
     $(".addSeason").append($(".addSeason"));
@@ -321,18 +302,10 @@ function newUserDataCallback(snapshot) {
 }
 
 $(function () {
-    initializeFirebase();
-
-    $("#logout").on("click", logoutButtonClicked);
-    setUserName();
-    checkLoginStatus();
-    $(".dropdown-trigger").dropdown();
-    
+    initializePage(true);
     $(".showSeasons").hide();
     $("#searchShowBtn").on("click", searchShowBtnClicked);
     $(document).on("click", ".addToWatchList", cardActionButtonClicked);
     userDataRef.on("value", newUserDataCallback);
-}
-);
-
-
+    $("#searchedShow").focus();
+});

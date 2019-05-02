@@ -1,4 +1,3 @@
-// Initialize Firebase
 var config = {
     apiKey: "AIzaSyASf5abJN7fdfHPBPUR9IC8VH9q4ViqLQE",
     authDomain: "binger-95cf5.firebaseapp.com",
@@ -9,7 +8,6 @@ var config = {
 };
 
 var database = null;
-
 var userName = null;
 var userDataRef = null;
 
@@ -27,11 +25,8 @@ function saveWatchList(watchList) {
 
 function initializeFirebase() {
     firebase.initializeApp(config);
-
     database = firebase.database();
-
     userName = localStorage.getItem("loginEmail");
-    console.log("loginEmail", userName);
     userDataRef = database.ref("/" + userName);
 }
 
@@ -43,23 +38,6 @@ function setUserName() {
     } else {
         $("#userName").text("");
         $("#logoutAnchor").hide();
-    }
-}
-
-function initializeNames() {
-    setUserName();
-
-    var email = localStorage.getItem("loginEmail");
-    if ((email == null) || (email == undefined)) {
-        $("#loginForm").show();
-        $("#welcomeBack").hide();
-        $("#navMenu").hide();
-    } else {
-        $("#loginForm").hide();
-        $("#welcomeBack").show();
-        $("#navMenu").show();
-        var userName = localStorage.getItem("userName");
-        $("#welcomeUserName").text(userName + "!");
     }
 }
 
@@ -75,4 +53,15 @@ function checkLoginStatus() {
     if (userName == null) {
         window.location.href = "index.html";
     }
+}
+
+function initializePage(checkLogin) {
+    initializeFirebase();
+    setUserName();
+    if (checkLogin) {
+        checkLoginStatus();
+    }
+    $(".dropdown-trigger").dropdown();
+    $("#logout").on("click", logoutButtonClicked);
+    $('.sidenav').sidenav({ closeOnClick: true });
 }
