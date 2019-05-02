@@ -1,35 +1,12 @@
-
- 
- body {
-   max-width: 100%;
- }
- 
- nav ul a,
- nav .brand-logo {
-   color: whitesmoke;
- }
- 
-
- 
- .sidenav-trigger {
-   color: whitesmoke;
- }
-
-
-
- #imageSized {
-   width: 200%;
- }
-
- html {
-  height: 100%;
-  box-sizing: border-box;
-}
-
 *,
 *:before,
 *:after {
   box-sizing: inherit;
+}
+
+html {
+  height: 100%;
+  box-sizing: border-box;
 }
 
 body {
@@ -37,6 +14,37 @@ body {
   margin: 0;
   padding-bottom: 6rem;
   min-height: 100%;
+  max-width: 100%;
+}
+ 
+nav ul a, nav .brand-logo {
+   color: whitesmoke;
+ }
+
+.addCast {
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-family: 'Rajdhani', sans-serif;
+}
+
+.brand-logo {
+  font-family: 'Orbitron', sans-serif;
+}
+
+.card-action {
+  font-size: 16px;
+}
+
+.card-content p {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;  
+}
+
+.date {
+  font-size: 20px;
+  text-align: center;
+  font-weight: bold;
 }
 
 .demo {
@@ -50,6 +58,29 @@ body {
   margin-top: 0;
 }
 
+.displayToday {
+  font-size: 13px;
+  width: 475px; 
+}
+
+.divBlocks {
+  max-width: 475px;
+  float: left;
+  margin-right: 20px;
+}
+
+.dropdown-content li>a {
+  color: black;
+}
+
+.select-wrapper ul>li>span {
+  color: black;
+}
+
+.select-wrapper input.select-dropdown:focus {
+  border-bottom: 1px solid black;
+}
+
 .footer {
   position: absolute;
   right: 0;
@@ -61,17 +92,11 @@ body {
   text-align: center;
 }
 
-.brand-logo {
-  font-family: 'Orbitron', sans-serif;
-}
-.addCast {
-  font-family: 'Open Sans Condensed', sans-serif;
-  font-family: 'Rajdhani', sans-serif;
-  /*this margin below was messing up the alignment of the page*/
-  /* margin-top: 80px; */ 
+.sidenav-trigger {
+  color: whitesmoke;
 }
 
- .text-block {
+.text-block {
   position: absolute;
   margin-left: 35%; 
   padding-bottom: 20px;
@@ -80,24 +105,20 @@ body {
   text-align: center;
 } 
 
+#errorMessage {
+  color: red;
+}
+
+#imageSized {
+  width: 200%;
+}
+
 #loginBackground {
   background-image: url('../images/secondimageattempt.jpg');
-  /* height: 250px;
-  max-width: 100%; */
   background-size: cover;
 }
 
-#welcomeBack {
-  color: black;
-  background-color: whitesmoke;
-  padding: 0 1em;
-  border: 1px solid black;
-  border-radius: 25px;
-}
-
 #loginForm {
-  /* color: whitesmoke;
-  background-color: black; */
   background-color: whitesmoke;
   padding: 1em;
   border: 1px solid black;
@@ -108,55 +129,22 @@ body {
   margin: 0 0 1em 0;
 }
 
-#errorMessage {
-  color: red;
-}
-
-.displayToday {
-  font-size: 13px;
-  width: 475px;
- 
-  
-}
-
-.card-action {
-  font-size: 16px;
-
-}
-
-.divBlocks {
-  max-width: 475px;
-  float: left;
-  margin-right: 20px;
-  
-}
- 
-.dropdown-content li>a {
-  color: black;
-}
-
-.date {
-  font-size: 20px;
-  text-align: center;
-  font-weight: bold;
-}
-
-.card-content p {
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 5;
-  -webkit-box-orient: vertical;  
+#seasonDivLoc{
+  margin-top: 80px;
 }
 
 #todayShow-8 {
- clear: both;
-  
+ clear: both;  
 } 
 
 #todayShow-14 {
   clear: both;
 }
 
-#seasonDivLoc{
-  margin-top: 80px;
+#welcomeBack {
+  color: black;
+  background-color: whitesmoke;
+  padding: 0 1em;
+  border: 1px solid black;
+  border-radius: 25px;
 }
