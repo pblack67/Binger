@@ -153,16 +153,9 @@ function showSelectorChanged(event) {
 }
 
 $(function () {
-    initializeFirebase();
-
-    $("#logout").on("click", logoutButtonClicked);
-    setUserName();
-    checkLoginStatus();
-    $(".dropdown-trigger").dropdown();
-
+    initializePage(true);
     $(document).on("click", ".setWatchedButton", setWatchedButtonClicked);
     $(document).on("change", "#showSelector", showSelectorChanged)
     userDataRef.on("value", newUserDataCallback);
-
     $('.collapsible').collapsible();
 })

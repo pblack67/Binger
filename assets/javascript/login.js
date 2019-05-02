@@ -21,10 +21,23 @@ function loginButtonClicked(event) {
     }
 }
 
+function initializeNames() {
+    var email = localStorage.getItem("loginEmail");
+    if ((email == null) || (email == undefined)) {
+        $("#loginForm").show();
+        $("#welcomeBack").hide();
+        $("#navMenu").hide();
+    } else {
+        $("#loginForm").hide();
+        $("#welcomeBack").show();
+        $("#navMenu").show();
+        var userName = localStorage.getItem("userName");
+        $("#welcomeUserName").text(userName + "!");
+    }
+}
+
 $(function () {
-    $("#loginButton").on("click", loginButtonClicked);
+    initializePage(false);
     initializeNames();
-    $("#logout").on("click", logoutButtonClicked);
-    setUserName();
-    $(".dropdown-trigger").dropdown();
+    $("#loginButton").on("click", loginButtonClicked);
 })
