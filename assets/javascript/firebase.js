@@ -53,9 +53,11 @@ function initializeNames() {
     if ((email == null) || (email == undefined)) {
         $("#loginForm").show();
         $("#welcomeBack").hide();
+        $("#navMenu").hide();
     } else {
         $("#loginForm").hide();
         $("#welcomeBack").show();
+        $("#navMenu").show();
         var userName = localStorage.getItem("userName");
         $("#welcomeUserName").text(userName + "!");
     }
