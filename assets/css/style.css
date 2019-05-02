@@ -121,6 +121,9 @@ body {
 
 .displayToday {
   font-size: 13px;
+  width: 475px;
+ 
+  
 }
 
 .card-action {
@@ -129,12 +132,34 @@ body {
 }
 
 .divBlocks {
-  max-width: 500px;
-
-}
-
+  max-width: 475px;
+  float: left;
+  margin-right: 20px;
   
+}
+ 
 .dropdown-content li>a {
   color: black;
 }
 
+.date {
+  font-size: 20px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.card-content p {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;  
+}
+
+#todayShow-8 {
+ clear: both;
+  
+} 
+
+#todayShow-14 {
+  clear: both;
+}

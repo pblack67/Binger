@@ -19,6 +19,9 @@ var settings = {
     //"headers": {},
     //"data": "{}"
   }
+
+var currentDate = moment().format("MMMM, Do YYYY");
+$(".date").text("TV Shows Airing Today: " + currentDate);
   
   $.ajax(settings).done(function (response) {
  
@@ -59,7 +62,8 @@ var settings = {
 
      var horizontal = $("<div>")
      .addClass("card horizontal divBlocks")
-     .append(cardImageDiv, cardStackedDiv) 
+     .attr("id", "todayShow-" + i)
+     .append(cardImageDiv, cardStackedDiv) ;
      $(".displayToday").append(horizontal);  
      
     }};
