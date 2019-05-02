@@ -307,4 +307,5 @@ $(function () {
     $("#searchShowBtn").on("click", searchShowBtnClicked);
     $(document).on("click", ".addToWatchList", cardActionButtonClicked);
     userDataRef.on("value", newUserDataCallback);
+    $("#searchedShow").focus();
 });

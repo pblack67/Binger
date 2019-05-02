@@ -40,4 +40,5 @@ $(function () {
     initializePage(false);
     initializeNames();
     $("#loginButton").on("click", loginButtonClicked);
+    $("#first_name").focus();
 })
