@@ -322,6 +322,12 @@ function newUserDataCallback(snapshot) {
 
 $(function () {
     initializeFirebase();
+
+    $("#logout").on("click", logoutButtonClicked);
+    setUserName();
+    checkLoginStatus();
+    $(".dropdown-trigger").dropdown();
+    
     $(".showSeasons").hide();
     $("#searchShowBtn").on("click", searchShowBtnClicked);
     $(document).on("click", ".addToWatchList", cardActionButtonClicked);
