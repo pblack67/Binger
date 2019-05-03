@@ -30,21 +30,32 @@ nav ul a, nav .brand-logo {
   font-family: 'Orbitron', sans-serif;
 }
 
-.card-action {
-  font-size: 16px;
+.discoverAction {
+  font-size: 14px;
+
+}
+
+/* below just changes the card-action divs on discover.html very important */
+.card .discoverAction {
+  padding: 0px 24px !important;
 }
 
 .card-content p {
   overflow: hidden;
   display: -webkit-box;
-  -webkit-line-clamp: 5;
+  -webkit-line-clamp: 6;
   -webkit-box-orient: vertical;  
 }
 
+
 .date {
   font-size: 20px;
-  text-align: center;
+  text-align: left;
   font-weight: bold;
+}
+
+#discoverRow {
+  padding-left: 170px;
 }
 
 .demo {
@@ -60,13 +71,13 @@ nav ul a, nav .brand-logo {
 
 .displayToday {
   font-size: 13px;
-  width: 475px; 
+  
 }
 
 .divBlocks {
-  max-width: 475px;
+  max-width: 40%;
   float: left;
-  margin-right: 20px;
+  margin-right: 30px;
 }
 
 /* The next half dozen or so  are shamlessly stolen from StackOverflow */
@@ -165,6 +176,8 @@ nav ul a, nav .brand-logo {
   margin-top: 80px;
 }
 
+
+
 #todayShow-8 {
  clear: both;  
 } 
@@ -172,6 +185,12 @@ nav ul a, nav .brand-logo {
 #todayShow-14 {
   clear: both;
 }
+#todayShow-16 {
+  clear: both;
+}
+#todayShow-18 {
+  clear: both;
+} 
 
 #welcomeBack {
   color: black;
