@@ -11,9 +11,10 @@ $(".date").text("TV Shows Airing Today: " + currentDate);
 $.ajax(settings).done(function (response) {
 
   console.log(response);
-  for (var i = 0; i < response.results.length; i++) {
+  for (var i = 0; i < response.results.length; i++) {  
+  
     if (response.results[i].original_language == "en") {
-
+         console.log(response.results[i].original_name); 
       var image = $("<img>")
         .addClass("image-sized")
         .attr("src", "https://image.tmdb.org/t/p/w154" + response.results[i].poster_path);
@@ -30,7 +31,7 @@ $.ajax(settings).done(function (response) {
       var moreInfo = $("<p>").text(response.results[i].original_name);
 
       var newCardAction = $("<div>")
-        .addClass("card-action")
+        .addClass("card-action discoverAction")
         .append(moreInfo);
 
       var cardStackedDiv = $("<div>")
@@ -42,8 +43,10 @@ $.ajax(settings).done(function (response) {
         .attr("id", "todayShow-" + i)
         .append(cardImageDiv, cardStackedDiv);
       $(".displayToday").append(horizontal);
+      
 
     }
+
   };
 
   $(".displayToday").append($(".displayToday"));
