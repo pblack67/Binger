@@ -58,7 +58,7 @@ If you have added multiple TV shows, they will populate from the downdown list, 
 After you click the accordion, each episode will populate. If you click the "3 dots" it will give the description of the episode. If you click the "Watched" buttun. It will remove the episode from the list. If you keep the episode on the page, it may confuse you on what episode is next in your watchlist. Delete it so you don't have to worry about it again. :+1:
 
 
-![alt text](assets/images/screenshots/pickseason.png "Episode Options")
+![alt text](assets/images/screenshots/episodeoptions.png "Episode Options")
 
 
 ![alt text](assets/images/screenshots/showoverview.png "Show Overview")
