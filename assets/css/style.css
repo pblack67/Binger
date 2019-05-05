@@ -40,10 +40,11 @@ nav ul a, nav .brand-logo {
   padding: 0px 24px !important;
 }
 
+/* number of lines of text to display for episode descriptions. */
 .card-content p {
   overflow: hidden;
   display: -webkit-box;
-  -webkit-line-clamp: 6;
+  -webkit-line-clamp: 7;
   -webkit-box-orient: vertical;  
 }
 
@@ -177,20 +178,10 @@ nav ul a, nav .brand-logo {
 }
 
 
-
-#todayShow-8 {
- clear: both;  
-} 
-
-#todayShow-14 {
-  clear: both;
+/* .horizontal should fix the div float issue */
+.horizonal {
+  float: left;
 }
-/* #todayShow-16 {
-  clear: both;
-} */
-#todayShow-18 {
-  clear: both;
-} 
 
 #welcomeBack {
   color: black;
