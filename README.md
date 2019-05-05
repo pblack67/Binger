@@ -17,7 +17,7 @@ Use The Binger to locate your favorite shows, save to a watchlist and check off 
 
 First page you will see is the search page. You have to enter in your first and last name and a valid formatted email address.
 
-![alt text](images/screenshots/login.png "First Page you will see is the search page. You have to etner iny our first and last name and a valid formatted email address")
+![alt text](assets/images/screenshots/login.png "First Page you will see is the search page. You have to etner iny our first and last name and a valid formatted email address")
 
 
 
