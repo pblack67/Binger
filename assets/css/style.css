@@ -40,10 +40,11 @@ nav ul a, nav .brand-logo {
   padding: 0px 24px !important;
 }
 
+/* number of lines of text to display for episode descriptions. */
 .card-content p {
   overflow: hidden;
   display: -webkit-box;
-  -webkit-line-clamp: 6;
+  -webkit-line-clamp: 7;
   -webkit-box-orient: vertical;  
 }
 
