@@ -45,7 +45,7 @@ When you click "Add To Watchlist" the button will change to let you know the sea
 
 ## My List Page
 
-My List Page will display first the most recently added TV show. You will also see to the left an accordion of the seasons that you added for that show. 
+My List Page will display first the most recently added TV show. You will also see to the right an accordion of the seasons that you added for that show. 
 
 ![alt text](assets/images/screenshots/mylistpg.png "My List 1st stop")
 
