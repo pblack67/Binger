@@ -136,6 +136,10 @@ nav ul a, nav .brand-logo {
   text-align: center;
 }
 
+.seasonWatchedButton {
+  margin-left: 1em;
+}
+
 .sidenav-trigger {
   color: whitesmoke;
 }

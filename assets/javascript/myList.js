@@ -44,14 +44,16 @@ function createSeasonList(watchList) {
         if (!episode.watched) {
             if (seasons.indexOf(episode.seasonNumber) == -1) {
                 seasons.push(episode.seasonNumber);
+                var seasonTextSpan = $("<span>")
+                    .text("Season " + episode.seasonNumber);
                 var seasonWatchedButton = $("<button>")
                     .text("Watched")
-                    .addClass("btn waves-effect black right seasonWatchedButton")
+                    .addClass("btn waves-effect black seasonWatchedButton")
                     .attr("data-showName", episode.showName)
                     .attr("data-seasonNumber", episode.seasonNumber);
                 var header = $("<div>")
-                    .addClass("collapsible-header")
-                    .text("Season " + episode.seasonNumber)
+                    .addClass("collapsible-header valign-wrapper")
+                    .append(seasonTextSpan)
                     .append(seasonWatchedButton);
                 currentBody = $("<div>")
                     .addClass("collapsible-body");
