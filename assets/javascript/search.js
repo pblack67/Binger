@@ -83,9 +83,29 @@ function addEpisodesToWatchList(episodes) {
     });
 }
 
+function episodeComparator(episode1, episode2) {
+    if (episode1.episodeNumber == episode2.episodeNumber) {
+        return 0;
+    } else if (episode1.episodeNumber > episode2.episodeNumber) {
+        return 1;
+    } else {
+        return -1;
+    }
+}
+
+function seasonComparator(episode1, episode2) {
+    if (episode1.seasonNumber == episode2.seasonNumber) {
+        return episodeComparator(episode1, episode2);
+    } else if (episode1.seasonNumber > episode2.seasonNumber) {
+        return 1;
+    } else {
+        return -1;
+    }
+}
+
 function watchListComparator(episode1, episode2) {
     if (episode1.showName == episode2.showName) {
-        return 0;
+        return seasonComparator(episode1, episode2);
     } else if (episode1.showName > episode2.showName) {
         return 1;
     } else {

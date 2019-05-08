@@ -44,9 +44,15 @@ function createSeasonList(watchList) {
         if (!episode.watched) {
             if (seasons.indexOf(episode.seasonNumber) == -1) {
                 seasons.push(episode.seasonNumber);
+                var seasonWatchedButton = $("<button>")
+                    .text("Watched")
+                    .addClass("btn waves-effect black right seasonWatchedButton")
+                    .attr("data-showName", episode.showName)
+                    .attr("data-seasonNumber", episode.seasonNumber);
                 var header = $("<div>")
                     .addClass("collapsible-header")
-                    .text("Season " + episode.seasonNumber);
+                    .text("Season " + episode.seasonNumber)
+                    .append(seasonWatchedButton);
                 currentBody = $("<div>")
                     .addClass("collapsible-body");
                 var listItem = $("<li>")
@@ -120,6 +126,15 @@ function findEpisode(showName, seasonNumber, episodeNumber) {
     return null;
 }
 
+function deleteSeason(showName, seasonNumber) {
+    console.log("deleteSeason", showName, seasonNumber);
+    watchList = watchList.filter(function (episode) {
+        return (episode.showName != showName)
+            || (episode.seasonNumber != seasonNumber);
+    });
+    saveWatchList(watchList);
+}
+
 function setWatchedButtonClicked(event) {
     event.preventDefault();
     var showName = $(this).attr("data-showName");
@@ -152,10 +167,18 @@ function showSelectorChanged(event) {
     }
 }
 
+function seasonWatchedButtonClicked(event) {
+    console.log("seasonWatchedButtonClicked", this);
+    var showName = $(this).attr("data-showName");
+    var seasonNumber = $(this).attr("data-seasonNumber");
+    deleteSeason(showName, seasonNumber);
+}
+
 $(function () {
     initializePage(true);
     $(document).on("click", ".setWatchedButton", setWatchedButtonClicked);
-    $(document).on("change", "#showSelector", showSelectorChanged)
+    $(document).on("change", "#showSelector", showSelectorChanged);
+    $(document).on("click", ".seasonWatchedButton", seasonWatchedButtonClicked);
     userDataRef.on("value", newUserDataCallback);
     $('.collapsible').collapsible();
 })
